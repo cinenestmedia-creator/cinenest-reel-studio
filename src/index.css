@@ -9,32 +9,47 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 120 40% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 120 40% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 120 40% 8%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* CineNest Brand Colors */
+    --primary: 120 40% 8%; /* #112817 */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 71 70% 51%; /* #BAD532 */
+    --secondary-foreground: 120 40% 8%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 71 70% 51%; /* #BAD532 */
+    --accent-foreground: 120 40% 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 71 70% 51%;
+
+    /* Custom CineNest tokens */
+    --brand-primary: 120 40% 8%; /* #112817 */
+    --brand-secondary: 71 70% 51%; /* #BAD532 */
+    --brand-gradient: linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-secondary)));
+    --hero-overlay: linear-gradient(rgba(17, 40, 23, 0.7), rgba(17, 40, 23, 0.5));
+    --section-padding: 5rem 0;
+    
+    /* Shadows with brand colors */
+    --shadow-brand: 0 10px 30px -10px hsl(var(--brand-primary) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--brand-secondary) / 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
@@ -101,5 +116,93 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero section styles */
+  .hero-section {
+    @apply min-h-screen bg-cover bg-center bg-no-repeat relative;
+    background-image: var(--hero-overlay);
+  }
+
+  /* Section padding utility */
+  .section-padding {
+    padding: var(--section-padding);
+  }
+
+  /* Brand gradient text */
+  .text-brand-gradient {
+    background: var(--brand-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  /* Brand shadows */
+  .shadow-brand {
+    box-shadow: var(--shadow-brand);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Navbar styles */
+  .navbar-blur {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+}
+
+@layer utilities {
+  /* Custom keyframes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Scroll indicators */
+  .section-indicator {
+    @apply w-2 h-2 rounded-full bg-primary/30 transition-all duration-300;
+  }
+
+  .section-indicator.active {
+    @apply bg-primary scale-125;
   }
 }
