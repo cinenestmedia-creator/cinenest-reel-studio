@@ -55,7 +55,10 @@ const Navbar = () => {
               alt="CineNest Media Logo" 
               className="h-8 w-8"
             />
-            <span className="text-xl font-bold text-primary">CineNest Media</span>
+            <span className="text-xl font-bold">
+              <span className="text-primary">Cine</span>
+              <span className="text-white">Nest Media</span>
+            </span>
           </div>
 
           {/* Navigation Links */}

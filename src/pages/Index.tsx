@@ -10,18 +10,21 @@ import BackToTop from '@/components/BackToTop';
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <ServicesSection />
-        <GallerySection />
-        <TestimonialsSection />
-        <ContactSection />
-      </main>
-      <Footer />
-      <BackToTop />
+    <div className="min-h-screen bg-cover bg-center bg-fixed relative" 
+         style={{ backgroundImage: 'url(/assets/hero-bg.jpg)' }}>
+      <div className="min-h-screen bg-white/80 backdrop-blur-sm">
+        <Navbar />
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <ServicesSection />
+          <GallerySection />
+          <TestimonialsSection />
+          <ContactSection />
+        </main>
+        <Footer />
+        <BackToTop />
+      </div>
     </div>
   );
 };
