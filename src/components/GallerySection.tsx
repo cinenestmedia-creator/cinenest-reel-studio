@@ -13,59 +13,132 @@ const GallerySection = () => {
     { id: 'all', label: 'All Work' },
     { id: 'wedding', label: 'Weddings' },
     { id: 'realestate', label: 'Real Estate' },
-    { id: 'events', label: 'Events' }
+    { id: 'events', label: 'Events & Ads' }
   ];
 
   const galleryItems = [
+    // Wedding Videos
     {
       id: 1,
-      type: 'image',
-      src: gallery1,
-      category: 'realestate',
-      title: 'Luxury Villa Tour',
-      description: 'Professional real estate video showcasing modern architecture'
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/0JfWCamUSts',
+      category: 'wedding',
+      title: 'Wedding Film 1',
+      description: 'Cinematic wedding celebration captured with artistic vision'
     },
     {
       id: 2,
-      type: 'image',
-      src: gallery2,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/8csGUSr4Wok',
       category: 'wedding',
-      title: 'Mountain Wedding',
-      description: 'Cinematic wedding film in Nepal\'s beautiful landscapes'
+      title: 'Wedding Highlights',
+      description: 'Beautiful moments from a special wedding day'
     },
     {
       id: 3,
-      type: 'image',
-      src: gallery3,
-      category: 'events',
-      title: 'Corporate Event',
-      description: 'Professional event coverage and highlights'
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/JGtRDFOAM8o',
+      category: 'wedding',
+      title: 'Wedding Story',
+      description: 'Emotional journey of love and commitment'
     },
     {
       id: 4,
-      type: 'video',
-      src: 'https://sample-videos.com/zip/10/mp4/480/SampleVideo_1280x720_1mb.mp4',
-      poster: gallery1,
-      category: 'realestate',
-      title: 'Property Showcase',
-      description: 'Dynamic real estate presentation video'
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/xa0za9ab22I',
+      category: 'wedding',
+      title: 'Wedding Ceremony',
+      description: 'Sacred moments beautifully documented'
     },
     {
       id: 5,
-      type: 'video',
-      src: 'https://sample-videos.com/zip/10/mp4/480/SampleVideo_1280x720_2mb.mp4',
-      poster: gallery2,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/7yWvNRFFvd8',
       category: 'wedding',
-      title: 'Wedding Highlights',
-      description: 'Emotional wedding day story'
+      title: 'Wedding Celebration',
+      description: 'Joyful celebration of union and love'
     },
     {
       id: 6,
-      type: 'image',
-      src: gallery3,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/KDRY1DaWVEg',
+      category: 'wedding',
+      title: 'Wedding Film',
+      description: 'Complete wedding story told through cinematic lens'
+    },
+    // Real Estate Videos
+    {
+      id: 7,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/8Bip0EG7htA',
+      category: 'realestate',
+      title: 'Property Showcase 1',
+      description: 'Stunning real estate presentation'
+    },
+    {
+      id: 8,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/yn85tlT0Xl8',
+      category: 'realestate',
+      title: 'Property Tour',
+      description: 'Professional property walkthrough'
+    },
+    {
+      id: 9,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/ay82TL5DPXE',
+      category: 'realestate',
+      title: 'Real Estate Film',
+      description: 'Cinematic property showcase'
+    },
+    {
+      id: 10,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/k0-Tp6LTsRY',
+      category: 'realestate',
+      title: 'Property Highlight',
+      description: 'Premium real estate presentation'
+    },
+    {
+      id: 11,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/3JXPvJQgijE',
+      category: 'realestate',
+      title: 'Luxury Property',
+      description: 'High-end real estate video production'
+    },
+    // Events and Ads
+    {
+      id: 12,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/eLnQfWhCYQo',
       category: 'events',
-      title: 'Event Photography',
-      description: 'Capturing special moments and celebrations'
+      title: 'Event Coverage',
+      description: 'Professional event documentation'
+    },
+    {
+      id: 13,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/gh6O7iMWe0Q',
+      category: 'events',
+      title: 'Corporate Event',
+      description: 'Business event highlights'
+    },
+    {
+      id: 14,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/mx1lfdarzLU',
+      category: 'events',
+      title: 'Advertisement Film',
+      description: 'Creative commercial production'
+    },
+    {
+      id: 15,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/TSd6csn9Nxg',
+      category: 'events',
+      title: 'Event Highlight',
+      description: 'Memorable moments captured professionally'
     }
   ];
 
@@ -104,44 +177,28 @@ const GallerySection = () => {
           {filteredItems.map((item, index) => (
             <Card key={item.id} className="group overflow-hidden shadow-brand border-0 transition-smooth hover:shadow-glow">
               <div className="relative aspect-video overflow-hidden">
-                {item.type === 'image' ? (
-                  <img 
-                    src={item.src} 
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                ) : (
-                  <div className="relative w-full h-full">
-                    <img 
-                      src={item.poster} 
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <video 
-                      src={item.src}
-                      className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      muted
-                      loop
-                      onMouseEnter={(e) => e.currentTarget.play()}
-                      onMouseLeave={(e) => e.currentTarget.pause()}
-                    />
-                  </div>
-                )}
+                <iframe
+                  src={item.src}
+                  title={item.title}
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
                 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/70 transition-all duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/70 transition-all duration-300 flex items-center justify-center pointer-events-none">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
                     <div className="flex items-center justify-center space-x-4 mb-4">
-                      {item.type === 'video' ? (
-                        <Button size="sm" variant="secondary" className="rounded-full">
-                          <Play className="h-4 w-4" />
-                        </Button>
-                      ) : (
-                        <Button size="sm" variant="secondary" className="rounded-full">
-                          <Eye className="h-4 w-4" />
-                        </Button>
-                      )}
-                      <Button size="sm" variant="secondary" className="rounded-full">
+                      <Button size="sm" variant="secondary" className="rounded-full pointer-events-auto">
+                        <Play className="h-4 w-4" />
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="secondary" 
+                        className="rounded-full pointer-events-auto"
+                        onClick={() => window.open(item.src.replace('/embed/', '/watch?v='), '_blank')}
+                      >
                         <ExternalLink className="h-4 w-4" />
                       </Button>
                     </div>
