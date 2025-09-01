@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Play, Eye, ExternalLink } from 'lucide-react';
-import gallery1 from '@/assets/gallery-1.jpg';
-import gallery2 from '@/assets/gallery-2.jpg';
-import gallery3 from '@/assets/gallery-3.jpg';
+import { Play, ExternalLink } from 'lucide-react';
 
 const GallerySection = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');

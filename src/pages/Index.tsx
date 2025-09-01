@@ -7,11 +7,12 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
+import heroBg from '@/assets/hero-bg.jpg';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-cover bg-center bg-fixed relative" 
-         style={{ backgroundImage: 'url(/assets/hero-bg.jpg)' }}>
+         style={{ backgroundImage: `url(${heroBg})` }}>
       <div className="min-h-screen bg-white/80 backdrop-blur-sm">
         <Navbar />
         <main>
