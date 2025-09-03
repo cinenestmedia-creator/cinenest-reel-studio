@@ -172,8 +172,8 @@ const GallerySection = () => {
         {/* Gallery Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {filteredItems.map((item, index) => (
-            <Card key={item.id} className="group overflow-hidden shadow-brand border-0 transition-smooth hover:shadow-glow">
-              <div className="relative aspect-video overflow-hidden">
+            <Card key={item.id} className="overflow-hidden shadow-brand border-0">
+              <div className="aspect-video overflow-hidden">
                 <iframe
                   src={item.src}
                   title={item.title}
@@ -182,27 +182,6 @@ const GallerySection = () => {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
-                
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/70 transition-all duration-300 flex items-center justify-center pointer-events-none">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
-                    <div className="flex items-center justify-center space-x-4 mb-4">
-                      <Button size="sm" variant="secondary" className="rounded-full pointer-events-auto">
-                        <Play className="h-4 w-4" />
-                      </Button>
-                      <Button 
-                        size="sm" 
-                        variant="secondary" 
-                        className="rounded-full pointer-events-auto"
-                        onClick={() => window.open(item.src.replace('/embed/', '/watch?v='), '_blank')}
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                      </Button>
-                    </div>
-                    <h3 className="text-white font-semibold mb-2">{item.title}</h3>
-                    <p className="text-white/90 text-sm">{item.description}</p>
-                  </div>
-                </div>
               </div>
             </Card>
           ))}
