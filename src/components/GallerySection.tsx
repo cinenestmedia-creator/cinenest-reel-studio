@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Play, ExternalLink } from 'lucide-react';
 
 const GallerySection = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('realestate');
 
   const categories = [
     { id: 'all', label: 'All Work' },
