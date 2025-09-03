@@ -29,7 +29,8 @@ const GallerySection = () => {
       src: 'https://www.youtube.com/embed/8csGUSr4Wok',
       category: 'wedding',
       title: 'Wedding Highlights',
-      description: 'Beautiful moments from a special wedding day'
+      description: 'Beautiful moments from a special wedding day',
+      isVertical: true
     },
     {
       id: 3,
@@ -70,7 +71,8 @@ const GallerySection = () => {
       src: 'https://www.youtube.com/embed/8Bip0EG7htA',
       category: 'realestate',
       title: 'Property Showcase 1',
-      description: 'Stunning real estate presentation'
+      description: 'Stunning real estate presentation',
+      isVertical: true
     },
     {
       id: 8,
@@ -78,7 +80,8 @@ const GallerySection = () => {
       src: 'https://www.youtube.com/embed/yn85tlT0Xl8',
       category: 'realestate',
       title: 'Property Tour',
-      description: 'Professional property walkthrough'
+      description: 'Professional property walkthrough',
+      isVertical: true
     },
     {
       id: 9,
@@ -94,7 +97,8 @@ const GallerySection = () => {
       src: 'https://www.youtube.com/embed/k0-Tp6LTsRY',
       category: 'realestate',
       title: 'Property Highlight',
-      description: 'Premium real estate presentation'
+      description: 'Premium real estate presentation',
+      isVertical: true
     },
     {
       id: 11,
@@ -170,21 +174,24 @@ const GallerySection = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {filteredItems.map((item, index) => (
-            <Card key={item.id} className="overflow-hidden shadow-brand border-0">
-              <div className="aspect-video overflow-hidden">
-                <iframe
-                  src={item.src}
-                  title={item.title}
-                  className="w-full h-full"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            </Card>
-          ))}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {filteredItems.map((item, index) => {
+            const isVertical = item.isVertical;
+            return (
+              <Card key={item.id} className={`overflow-hidden shadow-brand border-0 ${isVertical ? 'md:col-span-1' : 'md:col-span-2'}`}>
+                <div className={`overflow-hidden ${isVertical ? 'aspect-[9/16]' : 'aspect-video'}`}>
+                  <iframe
+                    src={item.src}
+                    title={item.title}
+                    className="w-full h-full"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </Card>
+            );
+          })}
         </div>
 
         {/* View More CTA */}
