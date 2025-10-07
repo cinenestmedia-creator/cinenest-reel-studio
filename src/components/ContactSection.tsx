@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -28,9 +29,19 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      // Here you would typically send the form data to your backend
-      // For now, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        }
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      console.log('Email sent successfully:', data);
       
       toast({
         title: "Message Sent!",
@@ -39,6 +50,7 @@ const ContactSection = () => {
       
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
+      console.error('Error sending message:', error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
