@@ -1,17 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Play, ExternalLink } from 'lucide-react';
 
 const GallerySection = () => {
-  const [selectedCategory, setSelectedCategory] = useState('realestate');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState('weddings');
 
   const categories = [
-    { id: 'all', label: 'All Work' },
-    { id: 'wedding', label: 'Weddings' },
+    { id: 'weddings', label: 'Weddings' },
     { id: 'realestate', label: 'Real Estate' },
-    { id: 'events', label: 'Events & Ads' }
+    { id: 'talkinghead', label: 'Talking Head' }
   ];
+
+  // Handle direct links to specific tabs
+  useEffect(() => {
+    const path = location.pathname.substring(1); // Remove leading slash
+    const validCategory = categories.find(cat => cat.id === path);
+    
+    if (validCategory) {
+      setSelectedCategory(validCategory.id);
+      // Scroll to gallery section
+      setTimeout(() => {
+        document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }, [location.pathname]);
 
   const galleryItems = [
     // Wedding Videos
@@ -19,7 +35,7 @@ const GallerySection = () => {
       id: 1,
       type: 'youtube',
       src: 'https://www.youtube.com/embed/0JfWCamUSts',
-      category: 'wedding',
+      category: 'weddings',
       title: 'Wedding Film 1',
       description: 'Cinematic wedding celebration captured with artistic vision'
     },
@@ -27,7 +43,7 @@ const GallerySection = () => {
       id: 2,
       type: 'youtube',
       src: 'https://www.youtube.com/embed/8csGUSr4Wok',
-      category: 'wedding',
+      category: 'weddings',
       title: 'Wedding Highlights',
       description: 'Beautiful moments from a special wedding day',
       isVertical: true
@@ -36,7 +52,7 @@ const GallerySection = () => {
       id: 3,
       type: 'youtube',
       src: 'https://www.youtube.com/embed/JGtRDFOAM8o',
-      category: 'wedding',
+      category: 'weddings',
       title: 'Wedding Story',
       description: 'Emotional journey of love and commitment'
     },
@@ -44,7 +60,7 @@ const GallerySection = () => {
       id: 4,
       type: 'youtube',
       src: 'https://www.youtube.com/embed/xa0za9ab22I',
-      category: 'wedding',
+      category: 'weddings',
       title: 'Wedding Ceremony',
       description: 'Sacred moments beautifully documented'
     },
@@ -52,7 +68,7 @@ const GallerySection = () => {
       id: 5,
       type: 'youtube',
       src: 'https://www.youtube.com/embed/7yWvNRFFvd8',
-      category: 'wedding',
+      category: 'weddings',
       title: 'Wedding Celebration',
       description: 'Joyful celebration of union and love'
     },
@@ -60,7 +76,7 @@ const GallerySection = () => {
       id: 6,
       type: 'youtube',
       src: 'https://www.youtube.com/embed/KDRY1DaWVEg',
-      category: 'wedding',
+      category: 'weddings',
       title: 'Wedding Film',
       description: 'Complete wedding story told through cinematic lens'
     },
@@ -108,44 +124,57 @@ const GallerySection = () => {
       title: 'Luxury Property',
       description: 'High-end real estate video production'
     },
-    // Events and Ads
+    // Talking Head
     {
       id: 12,
       type: 'youtube',
       src: 'https://www.youtube.com/embed/eLnQfWhCYQo',
-      category: 'events',
+      category: 'talkinghead',
       title: 'Event Coverage',
-      description: 'Professional event documentation'
+      description: 'Professional event documentation',
+      isVertical: true
     },
     {
       id: 13,
       type: 'youtube',
       src: 'https://www.youtube.com/embed/gh6O7iMWe0Q',
-      category: 'events',
+      category: 'talkinghead',
       title: 'Corporate Event',
-      description: 'Business event highlights'
+      description: 'Business event highlights',
+      isVertical: true
     },
     {
       id: 14,
       type: 'youtube',
       src: 'https://www.youtube.com/embed/mx1lfdarzLU',
-      category: 'events',
+      category: 'talkinghead',
       title: 'Advertisement Film',
-      description: 'Creative commercial production'
+      description: 'Creative commercial production',
+      isVertical: true
     },
     {
       id: 15,
       type: 'youtube',
       src: 'https://www.youtube.com/embed/TSd6csn9Nxg',
-      category: 'events',
+      category: 'talkinghead',
       title: 'Event Highlight',
-      description: 'Memorable moments captured professionally'
+      description: 'Memorable moments captured professionally',
+      isVertical: true
     }
   ];
 
-  const filteredItems = selectedCategory === 'all' 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === selectedCategory);
+  const filteredItems = galleryItems.filter(item => {
+    if (item.category !== selectedCategory) return false;
+    
+    // Filter by format based on category
+    if (selectedCategory === 'weddings') {
+      return !item.isVertical; // Only landscape videos
+    } else if (selectedCategory === 'realestate' || selectedCategory === 'talkinghead') {
+      return item.isVertical === true; // Only vertical videos
+    }
+    
+    return true;
+  });
 
   return (
     <section id="gallery" className="section-padding bg-background">
@@ -164,7 +193,10 @@ const GallerySection = () => {
               <Button
                 key={category.id}
                 variant={selectedCategory === category.id ? "default" : "outline"}
-                onClick={() => setSelectedCategory(category.id)}
+                onClick={() => {
+                  setSelectedCategory(category.id);
+                  navigate(`/${category.id}`, { replace: true });
+                }}
                 className="transition-smooth"
               >
                 {category.label}
