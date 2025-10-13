@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { MapPin, Phone, Mail, Instagram, Facebook, MessageCircle } from 'lucide-react';
+import { Phone, Mail, Instagram, Facebook, MessageCircle } from 'lucide-react';
 
 const ContactSection = () => {
 
@@ -16,12 +16,6 @@ const ContactSection = () => {
       label: "Phone/WhatsApp",
       value: "+977-9849668301",
       href: "tel:+9779849668301"
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "Kathmandu, Nepal",
-      href: "#"
     }
   ];
 
@@ -139,24 +133,6 @@ const ContactSection = () => {
                     </div>
                   );
                 })}
-              </CardContent>
-            </Card>
-
-            {/* Google Map */}
-            <Card className="shadow-brand border-0 overflow-hidden">
-              <CardContent className="p-0">
-                <div className="h-64 w-full">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.4889648439975!2d85.30693831506278!3d27.667487382791617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19cd6b5c5555%3A0x123456789!2sKathmandu%2C%20Nepal!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="CineNest Media Location"
-                  ></iframe>
-                </div>
               </CardContent>
             </Card>
 
