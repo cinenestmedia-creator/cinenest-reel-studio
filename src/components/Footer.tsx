@@ -114,9 +114,6 @@ const Footer = () => {
                   +977-9849668301
                 </a>
               </div>
-              <div className="text-white/80 text-sm">
-                Kathmandu, Nepal
-              </div>
             </div>
           </div>
         </div>
