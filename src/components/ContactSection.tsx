@@ -1,65 +1,8 @@
-import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
+import { MapPin, Phone, Mail, Instagram, Facebook, MessageCircle } from 'lucide-react';
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message
-        }
-      });
-
-      if (error) {
-        throw error;
-      }
-
-      console.log('Email sent successfully:', data);
-      
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. We'll get back to you soon!",
-      });
-      
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      console.error('Error sending message:', error);
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   const contactInfo = [
     {
@@ -120,61 +63,48 @@ const ContactSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
+          {/* Message Us */}
           <Card className="shadow-brand border-0">
             <CardHeader>
               <CardTitle className="text-2xl text-primary">Send us a Message</CardTitle>
             </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <Label htmlFor="name">Full Name *</Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="mt-2"
-                    placeholder="Your full name"
-                  />
-                </div>
-                
-                <div>
-                  <Label htmlFor="email">Email Address *</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="mt-2"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-                
-                <div>
-                  <Label htmlFor="message">Message *</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    className="mt-2 min-h-[120px]"
-                    placeholder="Tell us about your project, event date, or any specific requirements..."
-                  />
-                </div>
-
-                <Button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className="w-full text-lg py-3"
+            <CardContent className="space-y-4">
+              <p className="text-muted-foreground mb-6">
+                Choose your preferred platform to get in touch with us instantly!
+              </p>
+              
+              <Button
+                asChild
+                size="lg"
+                className="w-full text-lg py-6"
+              >
+                <a
+                  href="https://wa.me/9779849668301?text=Hello%20CineNest%20Media%2C%20I%27d%20like%20to%20inquire%20about%20your%20services"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </Button>
-              </form>
+                  <MessageCircle className="h-6 w-6" />
+                  Message us on WhatsApp
+                </a>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="w-full text-lg py-6"
+              >
+                <a
+                  href="https://www.instagram.com/cinenestmedia/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3"
+                >
+                  <Instagram className="h-6 w-6" />
+                  Message us on Instagram
+                </a>
+              </Button>
             </CardContent>
           </Card>
 
