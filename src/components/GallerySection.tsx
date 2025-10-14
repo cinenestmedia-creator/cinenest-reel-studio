@@ -77,6 +77,14 @@ const GallerySection = () => {
       title: 'Wedding Celebration',
       description: 'Joyful celebration of union and love'
     },
+    {
+      id: 9,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/0JfWCamUSts',
+      category: 'weddings',
+      title: 'Wedding Moments',
+      description: 'Cherished memories beautifully captured'
+    },
     // Real Estate Videos
     {
       id: 6,
@@ -103,6 +111,42 @@ const GallerySection = () => {
       category: 'realestate',
       title: 'Real Estate Film',
       description: 'Cinematic property showcase',
+      isVertical: true
+    },
+    {
+      id: 10,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/k0-Tp6LTsRY',
+      category: 'realestate',
+      title: 'Property Showcase',
+      description: 'Modern property presentation',
+      isVertical: true
+    },
+    {
+      id: 11,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/8Bip0EG7htA',
+      category: 'realestate',
+      title: 'Estate Feature',
+      description: 'Luxury property highlight',
+      isVertical: true
+    },
+    {
+      id: 12,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/yn85tlT0Xl8',
+      category: 'realestate',
+      title: 'Property Video',
+      description: 'Professional estate showcase',
+      isVertical: true
+    },
+    {
+      id: 13,
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/ay82TL5DPXE',
+      category: 'realestate',
+      title: 'Real Estate Tour',
+      description: 'Detailed property walkthrough',
       isVertical: true
     }
   ];
@@ -150,9 +194,9 @@ const GallerySection = () => {
             {filteredItems.map((item) => {
               const isVertical = item.isVertical;
               return (
-                <CarouselItem key={item.id} className={`pl-4 ${isVertical ? 'basis-1/3 md:basis-1/4 lg:basis-1/6' : 'basis-full md:basis-1/2 lg:basis-1/3'}`}>
+                <CarouselItem key={item.id} className={`pl-4 ${isVertical ? 'basis-1/2 md:basis-1/3 lg:basis-1/4' : 'basis-full md:basis-1/2 lg:basis-1/2'}`}>
                   <Card className="overflow-hidden shadow-brand border-0">
-                    <div className={`overflow-hidden ${isVertical ? 'aspect-[9/16]' : 'aspect-video'}`}>
+                    <div className={`overflow-hidden ${isVertical ? 'aspect-[9/16] h-[500px]' : 'aspect-video h-[400px]'}`}>
                       <iframe
                         src={item.src}
                         title={item.title}
