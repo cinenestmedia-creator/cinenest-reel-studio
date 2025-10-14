@@ -196,7 +196,7 @@ const GallerySection = () => {
               return (
                 <CarouselItem key={item.id} className={`pl-4 ${isVertical ? 'basis-1/2 md:basis-1/3 lg:basis-1/4' : 'basis-full md:basis-1/2 lg:basis-1/2'}`}>
                   <Card className="overflow-hidden shadow-brand border-0">
-                    <div className={`overflow-hidden ${isVertical ? 'aspect-[9/16] h-[500px]' : 'aspect-video h-[400px]'}`}>
+                    <div className={`overflow-hidden ${isVertical ? 'aspect-[9/16] h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px]' : 'aspect-video h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px]'}`}>
                       <iframe
                         src={item.src}
                         title={item.title}
