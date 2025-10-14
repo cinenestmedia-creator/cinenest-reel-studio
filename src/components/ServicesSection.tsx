@@ -1,26 +1,20 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Camera, Video, Home, Calendar, ArrowRight } from 'lucide-react';
+import { Video, Home, Calendar, ArrowRight } from 'lucide-react';
 
 const ServicesSection = () => {
   const services = [
     {
-      icon: Camera,
-      title: "Photography & Videography in Nepal",
-      description: "Professional on-location photography and videography services across Nepal's stunning landscapes. From intimate ceremonies to grand celebrations, we capture every precious moment.",
-      features: ["Wedding Photography", "Event Coverage", "Portrait Sessions", "Landscape Shoots"]
+      icon: Home,
+      title: "Premium Real Estate Video Editing",
+      description: "Professional real estate video editing services for agents and developers worldwide. Create compelling property tours that drive sales and engagement.",
+      features: ["Property Tours", "Drone Footage", "Virtual Staging", "Marketing Videos"]
     },
     {
       icon: Video,
       title: "Wedding Video Editing",
       description: "Transform your raw wedding footage into cinematic masterpieces. Our expert editors create emotional, story-driven films that you'll treasure forever.",
       features: ["Cinematic Editing", "Color Grading", "Audio Enhancement", "Multiple Formats"]
-    },
-    {
-      icon: Home,
-      title: "Premium Real Estate Video Editing",
-      description: "Professional real estate video editing services for agents and developers worldwide. Create compelling property tours that drive sales and engagement.",
-      features: ["Property Tours", "Drone Footage", "Virtual Staging", "Marketing Videos"]
     },
     {
       icon: Calendar,

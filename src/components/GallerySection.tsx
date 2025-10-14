@@ -221,10 +221,11 @@ const GallerySection = () => {
             size="lg" 
             variant="outline" 
             className="text-lg px-8 py-3"
-            onClick={() => window.open('https://www.instagram.com/cinenest_media', '_blank')}
+            onClick={() => {
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            }}
           >
-            View Complete Portfolio
-            <ExternalLink className="ml-2 h-5 w-5" />
+            Get in Touch
           </Button>
         </div>
       </div>
