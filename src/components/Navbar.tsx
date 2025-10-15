@@ -101,12 +101,6 @@ const Navbar = () => {
                       >
                         Real Estate Portfolio
                       </DropdownMenuItem>
-                      <DropdownMenuItem 
-                        onClick={() => navigate('/real-estate-pricing')}
-                        className="cursor-pointer hover:bg-muted"
-                      >
-                        Pricing
-                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 );
