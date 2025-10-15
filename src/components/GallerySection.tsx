@@ -222,10 +222,15 @@ const GallerySection = () => {
             variant="outline" 
             className="text-lg px-8 py-3"
             onClick={() => {
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              if (selectedCategory === 'weddings') {
+                navigate('/wedding-portfolio');
+              } else {
+                navigate('/real-estate-portfolio');
+              }
             }}
           >
-            Get in Touch
+            View Complete Portfolio
+            <ExternalLink className="ml-2 h-5 w-5" />
           </Button>
         </div>
       </div>
