@@ -1,7 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { ChevronDown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('hero');
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -9,7 +18,7 @@ const Navbar = () => {
     { id: 'hero', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Services' },
-    { id: 'gallery', label: 'Gallery' },
+    { id: 'gallery', label: 'Portfolio', hasDropdown: true },
     { id: 'testimonials', label: 'Testimonials' },
     { id: 'contact', label: 'Contact' },
   ];
@@ -63,19 +72,60 @@ const Navbar = () => {
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-medium transition-smooth hover:text-primary ${
-                  activeSection === item.id 
-                    ? 'text-primary border-b-2 border-primary' 
-                    : 'text-foreground/80'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) => {
+              if (item.hasDropdown && item.id === 'gallery') {
+                return (
+                  <DropdownMenu key={item.id}>
+                    <DropdownMenuTrigger asChild>
+                      <button
+                        className={`text-sm font-medium transition-smooth hover:text-primary flex items-center gap-1 ${
+                          activeSection === item.id 
+                            ? 'text-primary border-b-2 border-primary' 
+                            : 'text-foreground/80'
+                        }`}
+                      >
+                        {item.label}
+                        <ChevronDown className="h-4 w-4" />
+                      </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="bg-background z-50 border shadow-lg">
+                      <DropdownMenuItem 
+                        onClick={() => navigate('/wedding-portfolio')}
+                        className="cursor-pointer hover:bg-muted"
+                      >
+                        Wedding Portfolio
+                      </DropdownMenuItem>
+                      <DropdownMenuItem 
+                        onClick={() => navigate('/real-estate-portfolio')}
+                        className="cursor-pointer hover:bg-muted"
+                      >
+                        Real Estate Portfolio
+                      </DropdownMenuItem>
+                      <DropdownMenuItem 
+                        onClick={() => navigate('/real-estate-pricing')}
+                        className="cursor-pointer hover:bg-muted"
+                      >
+                        Pricing
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                );
+              }
+              
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`text-sm font-medium transition-smooth hover:text-primary ${
+                    activeSection === item.id 
+                      ? 'text-primary border-b-2 border-primary' 
+                      : 'text-foreground/80'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
           </div>
 
           {/* CTA Button */}
