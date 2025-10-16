@@ -21,7 +21,7 @@ const RealEstatePricing = () => {
       subtitle: "Best Value",
       price: "From $50",
       priceDetail: "per video",
-      minimum: "Minimum: 5 videos per month",
+      minimum: "Minimum: 2 videos per week",
       icon: Users,
       description: "For filmmakers or agencies producing multiple listings per month.",
       features: [
@@ -40,7 +40,7 @@ const RealEstatePricing = () => {
       subtitle: "Pay as You Go",
       price: "From $70",
       priceDetail: "per video",
-      minimum: "Up to 4 videos per month",
+      minimum: "Minimum: 1 video per week",
       icon: Home,
       description: "For independent videographers with up to 4 real estate videos per month.",
       features: [
