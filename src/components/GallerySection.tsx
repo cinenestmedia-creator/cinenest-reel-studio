@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ExternalLink } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
@@ -10,30 +8,18 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import WeddingPricingModal from './WeddingPricingModal';
+import RealEstatePricingModal from './RealEstatePricingModal';
 
 const GallerySection = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [selectedCategory, setSelectedCategory] = useState('weddings');
+  const [selectedCategory, setSelectedCategory] = useState('realestate');
+  const [showWeddingPricing, setShowWeddingPricing] = useState(false);
+  const [showRealEstatePricing, setShowRealEstatePricing] = useState(false);
 
   const categories = [
     { id: 'weddings', label: 'Weddings' },
     { id: 'realestate', label: 'Real Estate' }
   ];
-
-  // Handle direct links to specific tabs
-  useEffect(() => {
-    const path = location.pathname.substring(1); // Remove leading slash
-    const validCategory = categories.find(cat => cat.id === path);
-    
-    if (validCategory) {
-      setSelectedCategory(validCategory.id);
-      // Scroll to gallery section
-      setTimeout(() => {
-        document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    }
-  }, [location.pathname]);
 
   const galleryItems = [
     // Wedding Videos
@@ -170,10 +156,7 @@ const GallerySection = () => {
               <Button
                 key={category.id}
                 variant={selectedCategory === category.id ? "default" : "outline"}
-                onClick={() => {
-                  setSelectedCategory(category.id);
-                  navigate(`/${category.id}`, { replace: true });
-                }}
+                onClick={() => setSelectedCategory(category.id)}
                 className="transition-smooth"
               >
                 {category.label}
@@ -215,25 +198,33 @@ const GallerySection = () => {
           <CarouselNext className="right-0" />
         </Carousel>
 
-        {/* View More CTA */}
+        {/* View Pricing Button */}
         <div className="text-center">
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="text-lg px-8 py-3"
+          <Button
+            size="lg"
+            className="text-lg px-8 py-6"
             onClick={() => {
               if (selectedCategory === 'weddings') {
-                navigate('/wedding-portfolio');
+                setShowWeddingPricing(true);
               } else {
-                navigate('/real-estate-portfolio');
+                setShowRealEstatePricing(true);
               }
             }}
           >
-            View Complete Portfolio
-            <ExternalLink className="ml-2 h-5 w-5" />
+            View Pricing
           </Button>
         </div>
       </div>
+
+      {/* Pricing Modals */}
+      <WeddingPricingModal 
+        isOpen={showWeddingPricing} 
+        onClose={() => setShowWeddingPricing(false)} 
+      />
+      <RealEstatePricingModal 
+        isOpen={showRealEstatePricing} 
+        onClose={() => setShowRealEstatePricing(false)} 
+      />
     </section>
   );
 };

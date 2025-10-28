@@ -90,13 +90,13 @@ const Navbar = () => {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="bg-background z-50 border shadow-lg">
                       <DropdownMenuItem 
-                        onClick={() => navigate('/wedding-portfolio')}
+                        onClick={() => scrollToSection('gallery')}
                         className="cursor-pointer hover:bg-muted"
                       >
                         Wedding Portfolio
                       </DropdownMenuItem>
                       <DropdownMenuItem 
-                        onClick={() => navigate('/real-estate-portfolio')}
+                        onClick={() => scrollToSection('gallery')}
                         className="cursor-pointer hover:bg-muted"
                       >
                         Real Estate Portfolio

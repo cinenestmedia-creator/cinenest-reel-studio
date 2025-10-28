@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Phone, Mail, Instagram, Facebook, MessageCircle } from 'lucide-react';
+import { Phone, Mail, Instagram, Facebook, MessageCircle, Calendar } from 'lucide-react';
 
 const ContactSection = () => {
 
@@ -97,6 +97,23 @@ const ContactSection = () => {
                 >
                   <Instagram className="h-6 w-6" />
                   Message us on Instagram
+                </a>
+              </Button>
+
+              <Button
+                asChild
+                variant="secondary"
+                size="lg"
+                className="w-full text-lg py-6"
+              >
+                <a
+                  href="https://calendly.com/cinenestmedia/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3"
+                >
+                  <Calendar className="h-6 w-6" />
+                  Book a Call
                 </a>
               </Button>
             </CardContent>
