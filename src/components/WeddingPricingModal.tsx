@@ -73,12 +73,6 @@ const WeddingPricingModal = ({ isOpen, onClose }: WeddingPricingModalProps) => {
               <CardDescription className="text-base">
                 Transform your special day into a timeless cinematic masterpiece
               </CardDescription>
-              <div className="mt-4">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-bold text-primary">$120</span>
-                  <span className="text-muted-foreground text-lg">per video</span>
-                </div>
-              </div>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
