@@ -198,22 +198,18 @@ const GallerySection = () => {
           <CarouselNext className="right-0" />
         </Carousel>
 
-        {/* View Pricing Button */}
-        <div className="text-center">
-          <Button
-            size="lg"
-            className="text-lg px-8 py-6"
-            onClick={() => {
-              if (selectedCategory === 'weddings') {
-                setShowWeddingPricing(true);
-              } else {
-                setShowRealEstatePricing(true);
-              }
-            }}
-          >
-            View Pricing
-          </Button>
-        </div>
+        {/* View Pricing Button - Only for Real Estate */}
+        {selectedCategory === 'realestate' && (
+          <div className="text-center">
+            <Button
+              size="lg"
+              className="text-lg px-8 py-6"
+              onClick={() => setShowRealEstatePricing(true)}
+            >
+              View Pricing
+            </Button>
+          </div>
+        )}
       </div>
 
       {/* Pricing Modals */}
