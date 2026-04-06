@@ -1,22 +1,22 @@
 import { Card, CardContent } from '@/components/ui/card';
-import { Camera, MapPin, Award } from 'lucide-react';
+import { Zap, Shield, MessageSquare } from 'lucide-react';
 
 const AboutSection = () => {
   const highlights = [
     {
-      icon: Camera,
-      title: "Professional Excellence",
-      description: "Years of experience in capturing life's most precious moments with cinematic quality."
+      icon: Zap,
+      title: "Fast Turnaround",
+      description: "Quick delivery without compromising quality — so you can list faster and stay ahead of the competition."
     },
     {
-      icon: MapPin,
-      title: "Global & Local",
-      description: "Serving clients worldwide with video editing while specializing in Nepal's beautiful landscapes."
+      icon: Shield,
+      title: "Consistent Quality",
+      description: "Every video meets the same high standard — building a recognizable, trustworthy brand across all your content."
     },
     {
-      icon: Award,
-      title: "Premium Quality",
-      description: "Delivering top-tier wedding videos and real estate content that exceeds expectations."
+      icon: MessageSquare,
+      title: "Reliable Communication",
+      description: "Clear updates, fast responses, and a seamless workflow — we work as an extension of your team."
     }
   ];
 
@@ -29,8 +29,8 @@ const AboutSection = () => {
             About CineNest Media
           </h2>
           
-          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            At CineNest Media, we specialize in creating stunning visual narratives that capture the essence of your most important moments. From intimate weddings in the heart of Nepal to dynamic real estate showcases across the globe, we bring your vision to life with unparalleled creativity and technical expertise.
+          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+            At CineNest Media, we specialize in performance-driven video editing for real estate professionals and media teams. Our focus isn't just making your videos look good — it's making them work. We help you create content that captures attention, builds credibility, and helps you stand out in competitive markets. From luxury property tours to short-form social media content, every edit is crafted to maximize engagement and impact. We work as an extension of your team — delivering fast turnaround times, consistent quality, and reliable communication so you can focus on closing deals while we handle post-production.
           </p>
 
           {/* Highlights Grid */}
@@ -55,13 +55,13 @@ const AboutSection = () => {
             })}
           </div>
 
-          {/* Company Story */}
+          {/* Growth Partner Section */}
           <div className="bg-primary/5 rounded-2xl p-8 md:p-12">
             <h3 className="text-2xl md:text-3xl font-bold mb-6 text-primary">
-              Our Story
+              More Than Editors — We're Your Growth Partner
             </h3>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Founded with a passion for storytelling through the lens, CineNest Media has grown from a local photography service in Kathmandu to an internationally recognized video production and editing company. We combine traditional craftsmanship with cutting-edge technology to deliver wedding videos that become family heirlooms and real estate content that drives sales.
+              We don't just edit footage. We help you turn listings into high-converting visual assets, build a stronger personal or agency brand, and create consistent, high-quality content at scale. Our goal is simple — help you get more attention, more engagement, and better results from every video you publish.
             </p>
           </div>
         </div>

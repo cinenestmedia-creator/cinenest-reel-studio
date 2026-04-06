@@ -206,3 +206,22 @@ All colors MUST be HSL.
     @apply bg-primary scale-125;
   }
 }
+
+/* Logo scroll animation */
+@keyframes logo-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-scroll-track {
+  animation: logo-scroll 30s linear infinite;
+  width: max-content;
+}
+
+.logo-scroll-track:hover {
+  animation-play-state: paused;
+}

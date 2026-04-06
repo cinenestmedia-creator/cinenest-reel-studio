@@ -8,77 +8,24 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import WeddingPricingModal from './WeddingPricingModal';
-import RealEstatePricingModal from './RealEstatePricingModal';
 
 const GallerySection = () => {
-  const [selectedCategory, setSelectedCategory] = useState('realestate');
-  const [showWeddingPricing, setShowWeddingPricing] = useState(false);
-  const [showRealEstatePricing, setShowRealEstatePricing] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   const categories = [
-    { id: 'weddings', label: 'Weddings' },
-    { id: 'realestate', label: 'Real Estate' }
+    { id: 'all', label: 'All' },
+    { id: 'realestate', label: 'Real Estate' },
+    { id: 'social', label: 'Social Content' }
   ];
 
   const galleryItems = [
-    // Wedding Videos
-    {
-      id: 1,
-      type: 'youtube',
-      src: 'https://www.youtube.com/embed/UiuTtVdX3E0',
-      category: 'weddings',
-      title: 'Wedding Film 1',
-      description: 'Cinematic wedding celebration captured with artistic vision'
-    },
-    {
-      id: 2,
-      type: 'youtube',
-      src: 'https://www.youtube.com/embed/RmxWvtwZ10c',
-      category: 'weddings',
-      title: 'Wedding Film 2',
-      description: 'Beautiful moments from a special wedding day'
-    },
-    {
-      id: 3,
-      type: 'youtube',
-      src: 'https://www.youtube.com/embed/FZxZW3ELkY4',
-      category: 'weddings',
-      title: 'Wedding Story',
-      description: 'Emotional journey of love and commitment'
-    },
-    {
-      id: 4,
-      type: 'youtube',
-      src: 'https://www.youtube.com/embed/cPtMXzGYod8',
-      category: 'weddings',
-      title: 'Wedding Ceremony',
-      description: 'Sacred moments beautifully documented'
-    },
-    {
-      id: 5,
-      type: 'youtube',
-      src: 'https://www.youtube.com/embed/AUHBIrbpwmU',
-      category: 'weddings',
-      title: 'Wedding Celebration',
-      description: 'Joyful celebration of union and love'
-    },
-    {
-      id: 9,
-      type: 'youtube',
-      src: 'https://www.youtube.com/embed/0JfWCamUSts',
-      category: 'weddings',
-      title: 'Wedding Moments',
-      description: 'Cherished memories beautifully captured'
-    },
-    // Real Estate Videos
     {
       id: 6,
       type: 'youtube',
       src: 'https://www.youtube.com/embed/1skGbQtAs8g',
       category: 'realestate',
-      title: 'Property Showcase 1',
-      description: 'Stunning real estate presentation',
+      title: 'Luxury Property Tour',
+      description: 'Cinematic property showcase that drives buyer interest',
       isVertical: true
     },
     {
@@ -86,7 +33,7 @@ const GallerySection = () => {
       type: 'youtube',
       src: 'https://www.youtube.com/embed/t3sZIaL45lA',
       category: 'realestate',
-      title: 'Property Tour',
+      title: 'Modern Home Walkthrough',
       description: 'Professional property walkthrough',
       isVertical: true
     },
@@ -94,9 +41,9 @@ const GallerySection = () => {
       id: 8,
       type: 'youtube',
       src: 'https://www.youtube.com/embed/eZXZwGRuW7g',
-      category: 'realestate',
-      title: 'Real Estate Film',
-      description: 'Cinematic property showcase',
+      category: 'social',
+      title: 'Property Reel',
+      description: 'Scroll-stopping social content for listings',
       isVertical: true
     },
     {
@@ -104,17 +51,17 @@ const GallerySection = () => {
       type: 'youtube',
       src: 'https://www.youtube.com/embed/k0-Tp6LTsRY',
       category: 'realestate',
-      title: 'Property Showcase',
-      description: 'Modern property presentation',
+      title: 'Estate Feature Film',
+      description: 'High-end property presentation',
       isVertical: true
     },
     {
       id: 11,
       type: 'youtube',
       src: 'https://www.youtube.com/embed/8Bip0EG7htA',
-      category: 'realestate',
-      title: 'Estate Feature',
-      description: 'Luxury property highlight',
+      category: 'social',
+      title: 'Listing Highlight Reel',
+      description: 'Engaging short-form content',
       isVertical: true
     },
     {
@@ -122,7 +69,7 @@ const GallerySection = () => {
       type: 'youtube',
       src: 'https://www.youtube.com/embed/yn85tlT0Xl8',
       category: 'realestate',
-      title: 'Property Video',
+      title: 'Premium Property Video',
       description: 'Professional estate showcase',
       isVertical: true
     },
@@ -137,7 +84,9 @@ const GallerySection = () => {
     }
   ];
 
-  const filteredItems = galleryItems.filter(item => item.category === selectedCategory);
+  const filteredItems = selectedCategory === 'all' 
+    ? galleryItems 
+    : galleryItems.filter(item => item.category === selectedCategory);
 
   return (
     <section id="gallery" className="section-padding bg-background">
@@ -147,7 +96,7 @@ const GallerySection = () => {
             Our Portfolio
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Explore our collection of wedding films, real estate showcases, and event coverage that showcase our commitment to visual excellence.
+            A selection of real estate and social media videos crafted to engage, convert, and stand out.
           </p>
 
           {/* Category Filter */}
@@ -174,53 +123,27 @@ const GallerySection = () => {
           className="w-full mb-12"
         >
           <CarouselContent className="-ml-4">
-            {filteredItems.map((item) => {
-              const isVertical = item.isVertical;
-              return (
-                <CarouselItem key={item.id} className={`pl-4 ${isVertical ? 'basis-1/2 md:basis-1/3 lg:basis-1/4' : 'basis-full md:basis-1/2 lg:basis-1/2'}`}>
-                  <Card className="overflow-hidden shadow-brand border-0">
-                    <div className={`overflow-hidden ${isVertical ? 'aspect-[9/16] h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px]' : 'aspect-video h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px]'}`}>
-                      <iframe
-                        src={item.src}
-                        title={item.title}
-                        className="w-full h-full"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    </div>
-                  </Card>
-                </CarouselItem>
-              );
-            })}
+            {filteredItems.map((item) => (
+              <CarouselItem key={item.id} className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                <Card className="overflow-hidden shadow-brand border-0 group relative">
+                  <div className="overflow-hidden aspect-[9/16] h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px]">
+                    <iframe
+                      src={item.src}
+                      title={item.title}
+                      className="w-full h-full"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </Card>
+              </CarouselItem>
+            ))}
           </CarouselContent>
           <CarouselPrevious className="left-0" />
           <CarouselNext className="right-0" />
         </Carousel>
-
-        {/* View Pricing Button - Only for Real Estate */}
-        {selectedCategory === 'realestate' && (
-          <div className="text-center">
-            <Button
-              size="lg"
-              className="text-lg px-8 py-6"
-              onClick={() => setShowRealEstatePricing(true)}
-            >
-              View Pricing
-            </Button>
-          </div>
-        )}
       </div>
-
-      {/* Pricing Modals */}
-      <WeddingPricingModal 
-        isOpen={showWeddingPricing} 
-        onClose={() => setShowWeddingPricing(false)} 
-      />
-      <RealEstatePricingModal 
-        isOpen={showRealEstatePricing} 
-        onClose={() => setShowRealEstatePricing(false)} 
-      />
     </section>
   );
 };

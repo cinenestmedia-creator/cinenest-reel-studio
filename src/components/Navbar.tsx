@@ -1,25 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronDown } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
-  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('hero');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
     { id: 'hero', label: 'Home' },
-    { id: 'about', label: 'About' },
     { id: 'services', label: 'Services' },
-    { id: 'gallery', label: 'Portfolio', hasDropdown: true },
+    { id: 'gallery', label: 'Portfolio' },
     { id: 'testimonials', label: 'Testimonials' },
+    { id: 'about', label: 'About' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -27,7 +19,6 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Update active section based on scroll position
       const sections = navItems.map(item => document.getElementById(item.id));
       const scrollPosition = window.scrollY + 100;
 
@@ -49,6 +40,7 @@ const Navbar = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -66,69 +58,40 @@ const Navbar = () => {
             />
             <span className="text-xl font-bold">
               <span className="text-primary">Cine</span>
-              <span className="text-white">Nest Media</span>
+              <span className={`transition-colors duration-300 ${isScrolled ? 'text-primary' : 'text-white'}`}>Nest Media</span>
             </span>
           </div>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => {
-              if (item.hasDropdown && item.id === 'gallery') {
-                return (
-                  <DropdownMenu key={item.id}>
-                    <DropdownMenuTrigger asChild>
-                      <button
-                        className={`text-sm font-medium transition-smooth hover:text-primary flex items-center gap-1 ${
-                          activeSection === item.id 
-                            ? 'text-primary border-b-2 border-primary' 
-                            : 'text-foreground/80'
-                        }`}
-                      >
-                        {item.label}
-                        <ChevronDown className="h-4 w-4" />
-                      </button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="bg-background z-50 border shadow-lg">
-                      <DropdownMenuItem 
-                        onClick={() => scrollToSection('gallery')}
-                        className="cursor-pointer hover:bg-muted"
-                      >
-                        Wedding Portfolio
-                      </DropdownMenuItem>
-                      <DropdownMenuItem 
-                        onClick={() => scrollToSection('gallery')}
-                        className="cursor-pointer hover:bg-muted"
-                      >
-                        Real Estate Portfolio
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                );
-              }
-              
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`text-sm font-medium transition-smooth hover:text-primary ${
-                    activeSection === item.id 
-                      ? 'text-primary border-b-2 border-primary' 
-                      : 'text-foreground/80'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`text-sm font-medium transition-smooth hover:text-primary ${
+                  activeSection === item.id 
+                    ? 'text-primary border-b-2 border-primary' 
+                    : isScrolled ? 'text-foreground/80' : 'text-white/90 hover:text-white'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
 
           {/* CTA Button */}
           <Button 
             variant="default"
-            onClick={() => scrollToSection('contact')}
-            className="hidden md:block"
+            asChild
+            className="hidden md:inline-flex"
           >
-            Get Started
+            <a
+              href="https://calendly.com/cinenestmedia/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book a Call
+            </a>
           </Button>
 
           {/* Mobile Menu Button */}
@@ -136,11 +99,35 @@ const Navbar = () => {
             variant="ghost" 
             size="sm"
             className="md:hidden"
-            onClick={() => scrollToSection('contact')}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            Menu
+            {isMobileMenuOpen ? '✕' : '☰'}
           </Button>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-background rounded-lg shadow-lg p-4 mb-4 space-y-2">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`block w-full text-left px-4 py-2 rounded-md text-sm font-medium transition-smooth ${
+                  activeSection === item.id 
+                    ? 'bg-primary/10 text-primary' 
+                    : 'text-foreground/80 hover:bg-muted'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+            <Button asChild className="w-full mt-2">
+              <a href="https://calendly.com/cinenestmedia/30min" target="_blank" rel="noopener noreferrer">
+                Book a Call
+              </a>
+            </Button>
+          </div>
+        )}
       </div>
     </nav>
   );
