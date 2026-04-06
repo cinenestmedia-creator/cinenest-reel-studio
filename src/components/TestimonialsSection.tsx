@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Star, Quote } from 'lucide-react';
 
@@ -5,14 +6,6 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah & Michael Johnson",
-      role: "Wedding Clients",
-      content: "CineNest Media captured our wedding day perfectly! The team was professional, creative, and made us feel comfortable throughout the entire process. Our wedding film is absolutely stunning and brings tears to our eyes every time we watch it.",
-      rating: 5,
-      location: "Kathmandu, Nepal"
-    },
-    {
-      id: 2,
       name: "David Chen",
       role: "Real Estate Agent",
       content: "The real estate videos CineNest created for my luxury properties have been game-changers. The quality is exceptional, and the editing perfectly showcases each home's unique features. My sales have increased significantly since working with them.",
@@ -20,28 +13,36 @@ const TestimonialsSection = () => {
       location: "California, USA"
     },
     {
-      id: 3,
-      name: "Priya Sharma",
-      role: "Event Organizer",
-      content: "Working with CineNest Media for our corporate events has been fantastic. They understand our vision and deliver beyond expectations. The team is reliable, creative, and produces content that truly represents our brand.",
-      rating: 5,
-      location: "Pokhara, Nepal"
-    },
-    {
-      id: 4,
-      name: "Robert & Emma Wilson",
-      role: "Wedding Clients",
-      content: "From the initial consultation to the final delivery, CineNest Media exceeded all our expectations. They captured not just the events, but the emotions and atmosphere of our special day. Highly recommend!",
-      rating: 5,
-      location: "London, UK"
-    },
-    {
-      id: 5,
+      id: 2,
       name: "Amanda Rodriguez",
       role: "Property Developer",
       content: "The marketing videos CineNest produced for our development project were instrumental in our pre-sales success. Their attention to detail and understanding of what buyers want to see is remarkable.",
       rating: 5,
       location: "Miami, USA"
+    },
+    {
+      id: 3,
+      name: "James Mitchell",
+      role: "Real Estate Media Team Lead",
+      content: "CineNest has become our go-to post-production partner. They handle everything from cinematic property tours to short-form social content — fast, consistent, and always on-brand. It's like having an in-house editing team.",
+      rating: 5,
+      location: "Toronto, Canada"
+    },
+    {
+      id: 4,
+      name: "Sarah Thompson",
+      role: "Luxury Real Estate Agent",
+      content: "Working with CineNest Media has transformed how I market my listings. Every video they produce helps me stand out in a competitive market. My clients are always impressed with the quality.",
+      rating: 5,
+      location: "New York, USA"
+    },
+    {
+      id: 5,
+      name: "Marcus Lee",
+      role: "Real Estate Videographer",
+      content: "As a filmmaker, finding reliable editors is everything. CineNest delivers consistent, high-quality edits with fast turnaround. They understand the real estate market and what agents need to sell.",
+      rating: 5,
+      location: "Vancouver, Canada"
     }
   ];
 
@@ -54,39 +55,72 @@ const TestimonialsSection = () => {
     ));
   };
 
+  // Count-up animation
+  const statsRef = useRef<HTMLDivElement>(null);
+  const [countersStarted, setCountersStarted] = useState(false);
+  const [counts, setCounts] = useState({ videos: 0, clients: 0, countries: 0 });
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !countersStarted) {
+          setCountersStarted(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (statsRef.current) observer.observe(statsRef.current);
+    return () => observer.disconnect();
+  }, [countersStarted]);
+
+  useEffect(() => {
+    if (!countersStarted) return;
+    const targets = { videos: 1000, clients: 500, countries: 25 };
+    const duration = 2000;
+    const steps = 60;
+    const interval = duration / steps;
+    let step = 0;
+
+    const timer = setInterval(() => {
+      step++;
+      const progress = step / steps;
+      setCounts({
+        videos: Math.round(targets.videos * progress),
+        clients: Math.round(targets.clients * progress),
+        countries: Math.round(targets.countries * progress),
+      });
+      if (step >= steps) clearInterval(timer);
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, [countersStarted]);
+
   return (
-    <section id="testimonials" className="section-padding bg-muted/30">
+    <section id="testimonials" className="section-padding bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
             What Our Clients Say
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what our satisfied clients have to say about their experience working with CineNest Media.
+            Don't just take our word for it — hear from professionals who trust CineNest Media.
           </p>
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {testimonials.map((testimonial, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {testimonials.map((testimonial) => (
             <Card key={testimonial.id} className="shadow-brand border-0 transition-smooth hover:shadow-glow group">
               <CardContent className="p-8">
-                {/* Quote Icon */}
                 <div className="mb-6">
                   <Quote className="h-8 w-8 text-primary/30 group-hover:text-primary/50 transition-smooth" />
                 </div>
-
-                {/* Rating */}
                 <div className="flex items-center space-x-1 mb-4">
                   {renderStars(testimonial.rating)}
                 </div>
-
-                {/* Testimonial Content */}
                 <p className="text-muted-foreground mb-6 leading-relaxed">
                   "{testimonial.content}"
                 </p>
-
-                {/* Client Info */}
                 <div className="border-t pt-6">
                   <h4 className="font-semibold text-primary mb-1">
                     {testimonial.name}
@@ -104,18 +138,18 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="bg-primary rounded-2xl p-8 md:p-12 text-white">
+        <div ref={statsRef} className="bg-primary rounded-2xl p-8 md:p-12 text-white">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">500+</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">{counts.videos}+</div>
+              <div className="text-white/90">Videos Delivered</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">{counts.clients}+</div>
               <div className="text-white/90">Happy Clients</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">1000+</div>
-              <div className="text-white/90">Videos Created</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">25+</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">{counts.countries}+</div>
               <div className="text-white/90">Countries Served</div>
             </div>
             <div>
@@ -123,6 +157,9 @@ const TestimonialsSection = () => {
               <div className="text-white/90">Average Rating</div>
             </div>
           </div>
+          <p className="text-center text-white/60 text-sm mt-6">
+            Helping clients create content that performs — not just looks good.
+          </p>
         </div>
       </div>
     </section>

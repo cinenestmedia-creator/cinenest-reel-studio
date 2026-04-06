@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { Phone, Mail, Instagram, Facebook, MessageCircle, Calendar } from 'lucide-react';
 
 const ContactSection = () => {
-
   const contactInfo = [
     {
       icon: Mail,
@@ -28,7 +27,7 @@ const ContactSection = () => {
     },
     {
       icon: Facebook,
-      label: "Facebook", 
+      label: "Facebook",
       href: "https://www.facebook.com/cinenestmedia",
       color: "hover:text-blue-500"
     },
@@ -49,10 +48,10 @@ const ContactSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
-            Get in Touch
+            Let's Work Together
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to create something extraordinary? Let's discuss your project and bring your vision to life.
+            Ready to create content that converts? Reach out and let's discuss how we can help you grow.
           </p>
         </div>
 
@@ -60,52 +59,14 @@ const ContactSection = () => {
           {/* Message Us */}
           <Card className="shadow-brand border-0">
             <CardHeader>
-              <CardTitle className="text-2xl text-primary">Send us a Message</CardTitle>
+              <CardTitle className="text-2xl text-primary">Get in Touch</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-muted-foreground mb-6">
-                Choose your preferred platform to get in touch with us instantly!
+                Choose your preferred way to connect — we typically respond within a few hours.
               </p>
               
-              <Button
-                asChild
-                size="lg"
-                className="w-full text-lg py-6"
-              >
-                <a
-                  href="https://wa.me/9779849668301?text=Hello%20CineNest%20Media%2C%20I%27d%20like%20to%20inquire%20about%20your%20services"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3"
-                >
-                  <MessageCircle className="h-6 w-6" />
-                  Message us on WhatsApp
-                </a>
-              </Button>
-
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="w-full text-lg py-6"
-              >
-                <a
-                  href="https://www.instagram.com/cinenestmedia/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3"
-                >
-                  <Instagram className="h-6 w-6" />
-                  Message us on Instagram
-                </a>
-              </Button>
-
-              <Button
-                asChild
-                variant="secondary"
-                size="lg"
-                className="w-full text-lg py-6"
-              >
+              <Button asChild size="lg" className="w-full text-lg py-6">
                 <a
                   href="https://calendly.com/cinenestmedia/30min"
                   target="_blank"
@@ -116,12 +77,35 @@ const ContactSection = () => {
                   Book a Call
                 </a>
               </Button>
+
+              <Button asChild variant="outline" size="lg" className="w-full text-lg py-6">
+                <a
+                  href="https://wa.me/9779849668301?text=Hello%20CineNest%20Media%2C%20I%27d%20like%20to%20inquire%20about%20your%20services"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3"
+                >
+                  <MessageCircle className="h-6 w-6" />
+                  Message on WhatsApp
+                </a>
+              </Button>
+
+              <Button asChild variant="outline" size="lg" className="w-full text-lg py-6">
+                <a
+                  href="https://www.instagram.com/cinenestmedia/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3"
+                >
+                  <Instagram className="h-6 w-6" />
+                  Message on Instagram
+                </a>
+              </Button>
             </CardContent>
           </Card>
 
-          {/* Contact Info & Map */}
+          {/* Contact Info & Social */}
           <div className="space-y-8">
-            {/* Contact Information */}
             <Card className="shadow-brand border-0">
               <CardHeader>
                 <CardTitle className="text-2xl text-primary">Contact Information</CardTitle>
@@ -136,16 +120,9 @@ const ContactSection = () => {
                       </div>
                       <div>
                         <p className="font-medium text-primary">{info.label}</p>
-                        {info.href && info.href !== '#' ? (
-                          <a 
-                            href={info.href} 
-                            className="text-muted-foreground hover:text-primary transition-smooth"
-                          >
-                            {info.value}
-                          </a>
-                        ) : (
-                          <p className="text-muted-foreground">{info.value}</p>
-                        )}
+                        <a href={info.href} className="text-muted-foreground hover:text-primary transition-smooth">
+                          {info.value}
+                        </a>
                       </div>
                     </div>
                   );
@@ -153,7 +130,6 @@ const ContactSection = () => {
               </CardContent>
             </Card>
 
-            {/* Social Media */}
             <Card className="shadow-brand border-0">
               <CardHeader>
                 <CardTitle className="text-2xl text-primary">Follow Us</CardTitle>
@@ -177,7 +153,7 @@ const ContactSection = () => {
                   })}
                 </div>
                 <p className="text-sm text-muted-foreground mt-4">
-                  Stay connected and see our latest work on social media
+                  Follow us to see our latest work and client results
                 </p>
               </CardContent>
             </Card>

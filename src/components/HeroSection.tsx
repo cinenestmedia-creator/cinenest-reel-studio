@@ -30,13 +30,15 @@ const HeroSection = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            CineNest Media
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            Your Post-Production Partner for{' '}
+            <span className="text-secondary">High-Converting</span>{' '}
+            Real Estate Videos
           </h1>
           
-          {/* Tagline */}
-          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Creating cinematic memories through professional wedding videography and premium real estate video editing worldwide
+          {/* Subheadline */}
+          <p className="text-lg md:text-xl mb-8 text-white/90 max-w-3xl mx-auto">
+            We help real estate agents and media teams turn raw footage into cinematic, high-performing videos that attract buyers, build trust, and drive results.
           </p>
 
           {/* CTA Buttons */}
@@ -44,22 +46,38 @@ const HeroSection = () => {
             <Button 
               size="lg"
               variant="secondary"
-              onClick={() => scrollToSection('gallery')}
+              asChild
               className="text-lg px-8 py-3 shadow-glow"
             >
-              <Play className="mr-2 h-5 w-5" />
-              View Our Work
+              <a
+                href="https://calendly.com/cinenestmedia/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Play className="mr-2 h-5 w-5" />
+                Book a Call
+              </a>
             </Button>
             
             <Button 
               size="lg"
               variant="outline"
-              onClick={() => scrollToSection('contact')}
+              onClick={() => scrollToSection('gallery')}
               className="text-lg px-8 py-3 bg-white/10 border-white text-white hover:bg-white hover:text-primary"
             >
-              Get in Touch
+              View Portfolio
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
+          </div>
+
+          {/* Trust Line */}
+          <div className="mt-10 space-y-2">
+            <p className="text-white/70 text-sm tracking-wide uppercase">
+              Trusted by agents & media teams across US & Canada
+            </p>
+            <p className="text-white/50 text-xs">
+              Built for agents who take their brand seriously.
+            </p>
           </div>
 
           {/* Scroll Indicator */}

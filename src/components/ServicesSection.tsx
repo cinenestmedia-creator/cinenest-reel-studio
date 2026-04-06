@@ -1,45 +1,32 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Video, Home, Calendar, ArrowRight } from 'lucide-react';
+import { Home, Film, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const ServicesSection = () => {
   const services = [
     {
       icon: Home,
-      title: "Premium Real Estate Video Editing",
-      description: "Professional real estate video editing services for agents and developers worldwide. Create compelling property tours that drive sales and engagement.",
-      features: ["Property Tours", "Drone Footage", "Virtual Staging", "Marketing Videos"]
+      title: "Real Estate Video Editing",
+      description: "High-end edits designed to showcase properties in their best light and help you attract serious buyers.",
+      features: ["Cinematic property tours", "Luxury listing videos", "Drone footage integration", "MLS-ready & social media formats", "Smooth transitions & color grading", "Professional sound design"]
     },
     {
-      icon: Video,
-      title: "Wedding Video Editing",
-      description: "Transform your raw wedding footage into cinematic masterpieces. Our expert editors create emotional, story-driven films that you'll treasure forever.",
-      features: ["Cinematic Editing", "Color Grading", "Audio Enhancement", "Multiple Formats"]
-    },
-    {
-      icon: Calendar,
-      title: "Content & Engagement Planning",
-      description: "Strategic content planning and social media management to maximize your reach and engagement across all platforms.",
-      features: ["Content Strategy", "Social Media Planning", "Brand Development", "Analytics Tracking"]
+      icon: Film,
+      title: "Short-Form Content (Reels / Ads)",
+      description: "Content built for attention, engagement, and growth across social platforms.",
+      features: ["Hook-driven edits to stop the scroll", "Fast-paced cuts for higher retention", "Captions & motion graphics", "Optimized for Instagram, TikTok & ads"]
     }
   ];
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section id="services" className="section-padding bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
-            Our Services
+            Post-Production Solutions
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Comprehensive video production and editing services tailored to capture your most important moments and showcase your properties in the best light.
+            Professional video editing services designed to help real estate professionals sell faster and build stronger brands.
           </p>
         </div>
 
@@ -62,23 +49,14 @@ const ServicesSection = () => {
                   <p className="text-muted-foreground mb-6">
                     {service.description}
                   </p>
-                  <ul className="space-y-2 mb-6">
+                  <ul className="space-y-3 mb-6">
                     {service.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></div>
+                        <CheckCircle2 className="h-4 w-4 text-secondary mr-3 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
                   </ul>
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    onClick={() => scrollToSection('contact')}
-                    className="group/btn"
-                  >
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Button>
                 </CardContent>
               </Card>
             );
@@ -88,19 +66,25 @@ const ServicesSection = () => {
         {/* CTA Section */}
         <div className="text-center bg-primary rounded-2xl p-8 md:p-12 text-white">
           <h3 className="text-2xl md:text-3xl font-bold mb-4">
-            Ready to Start Your Project?
+            Ready to Elevate Your Listings?
           </h3>
           <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
-            Let's discuss how we can bring your vision to life with our professional video production and editing services.
+            Let's discuss how we can help you create content that converts — so you can focus on closing deals.
           </p>
           <Button 
             size="lg"
             variant="secondary"
-            onClick={() => scrollToSection('contact')}
+            asChild
             className="text-lg px-8 py-3"
           >
-            Get Free Quote
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <a
+              href="https://calendly.com/cinenestmedia/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book a Call
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
           </Button>
         </div>
       </div>
