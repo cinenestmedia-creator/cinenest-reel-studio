@@ -33,7 +33,7 @@ const Footer = () => {
               <span className="text-xl font-bold">CineNest Media</span>
             </div>
             <p className="text-white/80 mb-6 max-w-md">
-              Your post-production partner for high-converting real estate videos. We handle editing so you can focus on closing deals.
+              Bringing Stories to Life
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => {
