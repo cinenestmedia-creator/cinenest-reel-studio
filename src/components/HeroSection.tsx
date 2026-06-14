@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Play } from 'lucide-react';
-import heroBg from '@/assets/hero-bg.jpg';
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
@@ -15,7 +14,7 @@ const HeroSection = () => {
       id="hero" 
       className="hero-section flex items-center justify-center"
       style={{
-        backgroundImage: `var(--hero-overlay), url(${heroBg})`,
+        background: 'linear-gradient(135deg, #0A0A0A 0%, #0D1F14 100%)',
       }}
     >
       <div className="container mx-auto px-4 text-center text-white">
@@ -31,14 +30,13 @@ const HeroSection = () => {
 
           {/* Main Heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            Your Post-Production Partner for{' '}
-            <span className="text-secondary">High-Converting</span>{' '}
-            Real Estate Videos
+            Your Raw Footage,{' '}
+            <span className="text-secondary">Transformed.</span>
           </h1>
           
           {/* Subheadline */}
           <p className="text-lg md:text-xl mb-8 text-white/90 max-w-3xl mx-auto">
-            We help real estate agents and media teams turn raw footage into cinematic, high-performing videos that attract buyers, build trust, and drive results.
+            We help real estate agents, videographers, and media teams worldwide turn raw clips into cinematic, high-converting videos — with fast delivery and dedicated editors.
           </p>
 
           {/* CTA Buttons */}
@@ -70,13 +68,15 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          {/* Trust Line */}
-          <div className="mt-10 space-y-2">
-            <p className="text-white/70 text-sm tracking-wide uppercase">
-              Trusted by agents & media teams across US & Canada
-            </p>
-            <p className="text-white/50 text-xs">
-              Built for agents who take their brand seriously.
+          {/* Trust Line — delivery speed */}
+          <p className="mt-6 text-secondary text-sm font-medium">
+            ⚡ Most edits delivered within 48–72 hours
+          </p>
+
+          {/* Trust Line — features */}
+          <div className="mt-4">
+            <p className="text-white/50 text-xs tracking-widest uppercase">
+              48–72 hr delivery &nbsp;·&nbsp; 2 revision rounds &nbsp;·&nbsp; Real estate & marketing edits
             </p>
           </div>
 
