@@ -1,4 +1,3 @@
-import { useState, useEffect, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Star, Quote, Play } from 'lucide-react';
 
@@ -12,45 +11,6 @@ const TestimonialsSection = () => {
     ));
   };
 
-  // Count-up animation
-  const statsRef = useRef<HTMLDivElement>(null);
-  const [countersStarted, setCountersStarted] = useState(false);
-  const [counts, setCounts] = useState({ videos: 0, clients: 0, countries: 0 });
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !countersStarted) {
-          setCountersStarted(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    if (statsRef.current) observer.observe(statsRef.current);
-    return () => observer.disconnect();
-  }, [countersStarted]);
-
-  useEffect(() => {
-    if (!countersStarted) return;
-    const targets = { videos: 1000, clients: 500, countries: 25 };
-    const duration = 2000;
-    const steps = 60;
-    const interval = duration / steps;
-    let step = 0;
-
-    const timer = setInterval(() => {
-      step++;
-      const progress = step / steps;
-      setCounts({
-        videos: Math.round(targets.videos * progress),
-        clients: Math.round(targets.clients * progress),
-        countries: Math.round(targets.countries * progress),
-      });
-      if (step >= steps) clearInterval(timer);
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [countersStarted]);
 
   return (
     <section id="testimonials" className="section-padding bg-background">
@@ -151,28 +111,25 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Stats Section */}
-        <div ref={statsRef} className="bg-primary rounded-2xl p-8 md:p-12 text-white">
+        <div className="bg-primary rounded-2xl p-8 md:p-12 text-white">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">{counts.videos}+</div>
-              <div className="text-white/90">Videos Delivered</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">48–72 hrs</div>
+              <div className="text-white/90">Average delivery time</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">{counts.clients}+</div>
-              <div className="text-white/90">Happy Clients</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">2 rounds</div>
+              <div className="text-white/90">Revisions included per video</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">{counts.countries}+</div>
-              <div className="text-white/90">Countries Served</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">Worldwide</div>
+              <div className="text-white/90">Clients across US, CA, UK & beyond</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">5★</div>
-              <div className="text-white/90">Average Rating</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">LOG ready</div>
+              <div className="text-white/90">S-Log, C-Log, V-Log & more</div>
             </div>
           </div>
-          <p className="text-center text-white/60 text-sm mt-6">
-            Helping clients create content that performs — not just looks good.
-          </p>
         </div>
       </div>
     </section>
