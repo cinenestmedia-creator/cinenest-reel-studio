@@ -111,28 +111,25 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Stats Section */}
-        <div ref={statsRef} className="bg-primary rounded-2xl p-8 md:p-12 text-white">
+        <div className="bg-primary rounded-2xl p-8 md:p-12 text-white">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">{counts.videos}+</div>
-              <div className="text-white/90">Videos Delivered</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">48–72 hrs</div>
+              <div className="text-white/90">Average delivery time</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">{counts.clients}+</div>
-              <div className="text-white/90">Happy Clients</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">2 rounds</div>
+              <div className="text-white/90">Revisions included per video</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">{counts.countries}+</div>
-              <div className="text-white/90">Countries Served</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">Worldwide</div>
+              <div className="text-white/90">Clients across US, CA, UK & beyond</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">5★</div>
-              <div className="text-white/90">Average Rating</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2 text-secondary">LOG ready</div>
+              <div className="text-white/90">S-Log, C-Log, V-Log & more</div>
             </div>
           </div>
-          <p className="text-center text-white/60 text-sm mt-6">
-            Helping clients create content that performs — not just looks good.
-          </p>
         </div>
       </div>
     </section>
