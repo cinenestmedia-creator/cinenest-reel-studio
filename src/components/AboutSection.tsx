@@ -6,17 +6,17 @@ const AboutSection = () => {
     {
       icon: Zap,
       title: "Fast Turnaround",
-      description: "Quick delivery without compromising quality — so you can list faster and stay ahead of the competition."
+      description: "Most projects delivered within 48–72 hours. Rush delivery available on request."
     },
     {
       icon: Shield,
       title: "Consistent Quality",
-      description: "Every video meets the same high standard — building a recognizable, trustworthy brand across all your content."
+      description: "Every edit follows your brand style guide. Same editor, same look, every time."
     },
     {
       icon: MessageSquare,
       title: "Reliable Communication",
-      description: "Clear updates, fast responses, and a seamless workflow — we work as an extension of your team."
+      description: "WhatsApp and email updates throughout every project. You're never left guessing."
     }
   ];
 
@@ -30,7 +30,11 @@ const AboutSection = () => {
           </h2>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-            At CineNest Media, we specialize in performance-driven video editing for real estate professionals and media teams. Our focus isn't just making your videos look good — it's making them work. We help you create content that captures attention, builds credibility, and helps you stand out in competitive markets. From luxury property tours to short-form social media content, every edit is crafted to maximize engagement and impact. We work as an extension of your team — delivering fast turnaround times, consistent quality, and reliable communication so you can focus on closing deals while we handle post-production.
+            CineNest Media is a post-production team editing real estate and marketing videos for agents, videographers, and media companies worldwide.
+
+            We don't shoot footage — we transform it. Send us your raw clips and we handle the full edit: color grading, captions, music, motion graphics, and social-ready cuts. You get a polished video your clients will be proud of.
+
+            We work as a silent extension of your team — fast, consistent, and always on-brand — serving clients across the US, Canada, UK, Australia, and beyond.
           </p>
 
           {/* Highlights Grid */}
@@ -61,7 +65,7 @@ const AboutSection = () => {
               More Than Editors — We're Your Growth Partner
             </h3>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              We don't just edit footage. We help you turn listings into high-converting visual assets, build a stronger personal or agency brand, and create consistent, high-quality content at scale. Our goal is simple — help you get more attention, more engagement, and better results from every video you publish.
+              We don't just edit footage. We help you build a content system that works — consistent edits, fast delivery, and a team that understands what real estate and marketing audiences actually want to watch.
             </p>
           </div>
         </div>
