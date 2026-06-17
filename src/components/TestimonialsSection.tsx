@@ -12,45 +12,6 @@ const TestimonialsSection = () => {
     ));
   };
 
-  // Count-up animation
-  const statsRef = useRef<HTMLDivElement>(null);
-  const [countersStarted, setCountersStarted] = useState(false);
-  const [counts, setCounts] = useState({ videos: 0, clients: 0, countries: 0 });
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !countersStarted) {
-          setCountersStarted(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    if (statsRef.current) observer.observe(statsRef.current);
-    return () => observer.disconnect();
-  }, [countersStarted]);
-
-  useEffect(() => {
-    if (!countersStarted) return;
-    const targets = { videos: 1000, clients: 500, countries: 25 };
-    const duration = 2000;
-    const steps = 60;
-    const interval = duration / steps;
-    let step = 0;
-
-    const timer = setInterval(() => {
-      step++;
-      const progress = step / steps;
-      setCounts({
-        videos: Math.round(targets.videos * progress),
-        clients: Math.round(targets.clients * progress),
-        countries: Math.round(targets.countries * progress),
-      });
-      if (step >= steps) clearInterval(timer);
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [countersStarted]);
 
   return (
     <section id="testimonials" className="section-padding bg-background">
