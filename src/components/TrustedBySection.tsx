@@ -1,35 +1,26 @@
 const TrustedBySection = () => {
-  const logos = [
-    "Keller Williams", "RE/MAX", "Coldwell Banker", "Century 21", 
-    "Sotheby's", "Compass", "eXp Realty", "Berkshire Hathaway",
-    "Douglas Elliman", "Engel & Völkers"
-  ];
-
   return (
-    <section className="py-16 bg-muted/20 overflow-hidden">
-      <div className="container mx-auto px-4 text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold mb-3 text-primary">
-          Trusted by Growing Brands & Agencies
-        </h2>
-        <p className="text-muted-foreground text-lg">
-          Partnered with real estate professionals, media teams, and creators worldwide.
+    <section className="py-16 bg-muted/20">
+      <div className="container mx-auto px-4">
+        <p className="text-center text-xs md:text-sm uppercase tracking-[0.2em] text-muted-foreground font-medium mb-8">
+          Trusted by videographers & agencies worldwide
         </p>
-      </div>
 
-      {/* Infinite Scroll Carousel */}
-      <div className="relative">
-        <div className="logo-scroll-track flex">
-          {[...logos, ...logos].map((name, index) => (
+        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+          {Array.from({ length: 5 }).map((_, i) => (
             <div
-              key={index}
-              className="flex-shrink-0 mx-8 flex items-center justify-center h-16 px-8 bg-background rounded-lg shadow-sm border border-border/50"
+              key={i}
+              className="flex items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/30 bg-muted/40"
+              style={{ width: 140, height: 56 }}
             >
-              <span className="text-muted-foreground font-semibold text-sm whitespace-nowrap tracking-wide">
-                {name}
-              </span>
+              <span className="text-xs text-muted-foreground/70">[Client Logo]</span>
             </div>
           ))}
         </div>
+
+        <p className="text-center text-xs md:text-sm italic text-muted-foreground mt-6 max-w-2xl mx-auto">
+          Client logos being added — we've worked with videographers and real estate teams across the US, Canada, UK, and Australia.
+        </p>
       </div>
     </section>
   );
