@@ -1,56 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Star, Quote } from 'lucide-react';
+import { Star, Quote, Play } from 'lucide-react';
 
 const TestimonialsSection = () => {
-  const testimonials = [
-    {
-      id: 1,
-      name: "David Chen",
-      role: "Real Estate Agent",
-      content: "The real estate videos CineNest created for my luxury properties have been game-changers. The quality is exceptional, and the editing perfectly showcases each home's unique features. My sales have increased significantly since working with them.",
-      rating: 5,
-      location: "California, USA"
-    },
-    {
-      id: 2,
-      name: "Amanda Rodriguez",
-      role: "Property Developer",
-      content: "The marketing videos CineNest produced for our development project were instrumental in our pre-sales success. Their attention to detail and understanding of what buyers want to see is remarkable.",
-      rating: 5,
-      location: "Miami, USA"
-    },
-    {
-      id: 3,
-      name: "James Mitchell",
-      role: "Real Estate Media Team Lead",
-      content: "CineNest has become our go-to post-production partner. They handle everything from cinematic property tours to short-form social content — fast, consistent, and always on-brand. It's like having an in-house editing team.",
-      rating: 5,
-      location: "Toronto, Canada"
-    },
-    {
-      id: 4,
-      name: "Sarah Thompson",
-      role: "Luxury Real Estate Agent",
-      content: "Working with CineNest Media has transformed how I market my listings. Every video they produce helps me stand out in a competitive market. My clients are always impressed with the quality.",
-      rating: 5,
-      location: "New York, USA"
-    },
-    {
-      id: 5,
-      name: "Marcus Lee",
-      role: "Real Estate Videographer",
-      content: "As a filmmaker, finding reliable editors is everything. CineNest delivers consistent, high-quality edits with fast turnaround. They understand the real estate market and what agents need to sell.",
-      rating: 5,
-      location: "Vancouver, Canada"
-    }
-  ];
-
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
-      <Star 
-        key={index} 
-        className={`h-4 w-4 ${index < rating ? 'fill-secondary text-secondary' : 'text-muted-foreground'}`} 
+      <Star
+        key={index}
+        className={`h-4 w-4 ${index < rating ? 'fill-secondary text-secondary' : 'text-muted-foreground'}`}
       />
     ));
   };
@@ -98,43 +55,99 @@ const TestimonialsSection = () => {
   return (
     <section id="testimonials" className="section-padding bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
+        {/* Section Heading */}
+        <div className="text-center mb-12 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
             What Our Clients Say
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Don't just take our word for it — hear from professionals who trust CineNest Media.
-          </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="shadow-brand border-0 transition-smooth hover:shadow-glow group">
-              <CardContent className="p-8">
-                <div className="mb-6">
-                  <Quote className="h-8 w-8 text-primary/30 group-hover:text-primary/50 transition-smooth" />
-                </div>
-                <div className="flex items-center space-x-1 mb-4">
-                  {renderStars(testimonial.rating)}
-                </div>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  "{testimonial.content}"
+        {/* Featured Video Testimonial */}
+        <div className="max-w-[720px] mx-auto mb-6">
+          <div className="relative aspect-video bg-primary/90 rounded-2xl overflow-hidden flex items-center justify-center group">
+            {/* Play Button */}
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20 group-hover:bg-white/20 transition-smooth">
+                <Play className="h-7 w-7 text-white fill-white ml-1" />
+              </div>
+              <span className="text-white/80 text-sm font-medium tracking-wide">
+                Client Testimonial Video
+              </span>
+            </div>
+
+            {/* Optional: iframe embed placeholder — uncomment and replace src when ready */}
+            {/*
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/VIDEO_ID"
+              title="Client Testimonial Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+            */}
+          </div>
+        </div>
+
+        <p className="text-center text-sm text-muted-foreground mb-14">
+          Real results from a real client — no scripts, no actors.
+        </p>
+
+        {/* Muted note above cards */}
+        <p className="text-center text-xs text-muted-foreground mb-6">
+          More written reviews coming soon — reach out to us directly for references.
+        </p>
+
+        {/* Placeholder Quote Cards */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+          <Card className="shadow-brand border-0 transition-smooth hover:shadow-glow group">
+            <CardContent className="p-8">
+              <div className="mb-6">
+                <Quote className="h-8 w-8 text-primary/30 group-hover:text-primary/50 transition-smooth" />
+              </div>
+              <div className="flex items-center space-x-1 mb-4">
+                {renderStars(5)}
+              </div>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                "[Your client quote will go here]"
+              </p>
+              <div className="border-t pt-6">
+                <h4 className="font-semibold text-primary mb-1">
+                  [Client Name]
+                </h4>
+                <p className="text-sm text-muted-foreground mb-1">
+                  Real Estate Videographer
                 </p>
-                <div className="border-t pt-6">
-                  <h4 className="font-semibold text-primary mb-1">
-                    {testimonial.name}
-                  </h4>
-                  <p className="text-sm text-muted-foreground mb-1">
-                    {testimonial.role}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {testimonial.location}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                <p className="text-xs text-muted-foreground">
+                  United States
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="shadow-brand border-0 transition-smooth hover:shadow-glow group">
+            <CardContent className="p-8">
+              <div className="mb-6">
+                <Quote className="h-8 w-8 text-primary/30 group-hover:text-primary/50 transition-smooth" />
+              </div>
+              <div className="flex items-center space-x-1 mb-4">
+                {renderStars(5)}
+              </div>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                "[Your second client quote will go here]"
+              </p>
+              <div className="border-t pt-6">
+                <h4 className="font-semibold text-primary mb-1">
+                  [Client Name]
+                </h4>
+                <p className="text-sm text-muted-foreground mb-1">
+                  Marketing Agency
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  Canada
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Stats Section */}
