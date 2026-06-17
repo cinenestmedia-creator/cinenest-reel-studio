@@ -4,36 +4,41 @@ const logos = [
   { src: "/client-logos/matan-logo.webp", alt: "Matan" },
   { src: "/client-logos/popular-stories.png", alt: "Popular Stories" },
   { src: "/client-logos/soom-soom.png", alt: "Soom Soom" },
+  { src: "/client-logos/Operation_Namaste_DT.jpg", alt: "Operation Namaste" },
+  { src: "/client-logos/Tenzi_Homes_DT.jpg", alt: "Tenzi Homes" },
+  { src: "/client-logos/evan_hsu_DT.jpg", alt: "Evan Hsu" },
+  { src: "/client-logos/shohat_group_DT.jpg", alt: "Shohat Group" },
+  { src: "/client-logos/images.png", alt: "Client" },
 ];
 
 const TrustedBySection = () => {
+  const loop = [...logos, ...logos];
+
   return (
-    <section className="py-16 bg-muted/20">
+    <section className="py-16 bg-muted/20 overflow-hidden">
       <div className="container mx-auto px-4">
-        <p className="text-center text-xs md:text-sm uppercase tracking-[0.2em] text-muted-foreground font-medium mb-8">
+        <p className="text-center text-xs md:text-sm uppercase tracking-[0.2em] text-muted-foreground font-medium mb-10">
           Trusted by videographers & agencies worldwide
         </p>
+      </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
-          {logos.map((logo, i) => (
+      <div className="relative w-full overflow-hidden">
+        <div className="logo-scroll-track flex items-center gap-10 md:gap-12">
+          {loop.map((logo, i) => (
             <div
               key={i}
-              className="flex items-center justify-center rounded-lg bg-muted/40 px-4 py-2"
-              style={{ width: 140, height: 56 }}
+              className="flex items-center justify-center shrink-0"
+              style={{ height: 56 }}
             >
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className="max-w-full max-h-full object-contain"
+                className="max-h-12 w-auto object-contain"
                 loading="lazy"
               />
             </div>
           ))}
         </div>
-
-        <p className="text-center text-xs md:text-sm italic text-muted-foreground mt-6 max-w-2xl mx-auto">
-          Client logos being added — we've worked with videographers and real estate teams across the US, Canada, UK, and Australia.
-        </p>
       </div>
     </section>
   );
