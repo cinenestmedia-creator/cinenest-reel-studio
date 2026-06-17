@@ -11,7 +11,7 @@ const logos = [
 ];
 
 const TrustedBySection = () => {
-  const loop = [...logos, ...logos];
+  const loop = [...logos, ...logos, ...logos];
 
   return (
     <section className="py-16 bg-muted/20 overflow-hidden">
@@ -22,7 +22,7 @@ const TrustedBySection = () => {
       </div>
 
       <div className="relative w-full overflow-hidden">
-        <div className="logo-scroll-track flex items-center gap-10 md:gap-12">
+        <div className="logo-scroll-track flex items-center gap-16 md:gap-20">
           {loop.map((logo, i) => (
             <div
               key={i}
@@ -32,7 +32,7 @@ const TrustedBySection = () => {
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className="max-h-12 w-auto object-contain"
+                className="max-h-10 w-auto object-contain"
                 loading="lazy"
               />
             </div>
