@@ -1,3 +1,11 @@
+const logos = [
+  { src: "/client-logos/color-logo.png", alt: "Color Logo" },
+  { src: "/client-logos/corridor18.png", alt: "Corridor 18" },
+  { src: "/client-logos/matan-logo.webp", alt: "Matan" },
+  { src: "/client-logos/popular-stories.png", alt: "Popular Stories" },
+  { src: "/client-logos/soom-soom.png", alt: "Soom Soom" },
+];
+
 const TrustedBySection = () => {
   return (
     <section className="py-16 bg-muted/20">
@@ -7,13 +15,18 @@ const TrustedBySection = () => {
         </p>
 
         <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
-          {Array.from({ length: 5 }).map((_, i) => (
+          {logos.map((logo, i) => (
             <div
               key={i}
-              className="flex items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/30 bg-muted/40"
+              className="flex items-center justify-center rounded-lg bg-muted/40 px-4 py-2"
               style={{ width: 140, height: 56 }}
             >
-              <span className="text-xs text-muted-foreground/70">[Client Logo]</span>
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                className="max-w-full max-h-full object-contain"
+                loading="lazy"
+              />
             </div>
           ))}
         </div>
