@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Home, Film, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Home, Film, Lightbulb, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const ServicesSection = () => {
   const services = [
@@ -8,13 +8,19 @@ const ServicesSection = () => {
       icon: Home,
       title: "Real Estate Video Editing",
       description: "High-end edits designed to showcase properties in their best light and help you attract serious buyers.",
-      features: ["Cinematic property tours", "Luxury listing videos", "Drone footage integration", "MLS-ready & social media formats", "Smooth transitions & color grading", "Professional sound design"]
+      features: ["Cinematic property tours", "Luxury listing videos", "Drone footage integration", "MLS-ready & social media formats", "Smooth transitions & color grading", "Professional sound design", "2 revision rounds included"]
     },
     {
       icon: Film,
       title: "Short-Form Content (Reels / Ads)",
       description: "Content built for attention, engagement, and growth across social platforms.",
       features: ["Hook-driven edits to stop the scroll", "Fast-paced cuts for higher retention", "Captions & motion graphics", "Optimized for Instagram, TikTok & ads"]
+    },
+    {
+      icon: Lightbulb,
+      title: "Content Planning & Strategy",
+      description: "Don't know what to shoot? We help you plan it.",
+      features: ["Monthly content calendar tailored to your listings", "Shot list and scene breakdown for your videographer", "Platform-specific strategy (Instagram, YouTube, TikTok)", "Hooks and caption suggestions for each video", "Aligned with your brand voice and posting schedule"]
     }
   ];
 
@@ -26,7 +32,7 @@ const ServicesSection = () => {
             Post-Production Solutions
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Professional video editing services designed to help real estate professionals sell faster and build stronger brands.
+            Professional video editing and content strategy services designed to help real estate professionals and marketing teams stand out worldwide.
           </p>
         </div>
 
