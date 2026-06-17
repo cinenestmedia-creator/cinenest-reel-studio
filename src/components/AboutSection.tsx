@@ -6,17 +6,17 @@ const AboutSection = () => {
     {
       icon: Zap,
       title: "Fast Turnaround",
-      description: "Quick delivery without compromising quality — so you can list faster and stay ahead of the competition."
+      description: "Most projects delivered within 48–72 hours. Rush delivery available on request."
     },
     {
       icon: Shield,
       title: "Consistent Quality",
-      description: "Every video meets the same high standard — building a recognizable, trustworthy brand across all your content."
+      description: "Every edit follows your brand style guide. Same editor, same look, every time."
     },
     {
       icon: MessageSquare,
       title: "Reliable Communication",
-      description: "Clear updates, fast responses, and a seamless workflow — we work as an extension of your team."
+      description: "WhatsApp and email updates throughout every project. You're never left guessing."
     }
   ];
 
