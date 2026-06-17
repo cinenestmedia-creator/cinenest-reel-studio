@@ -1,14 +1,13 @@
 const logos = [
-  { src: "/client-logos/color-logo.png", alt: "Color Logo" },
-  { src: "/client-logos/corridor18.png", alt: "Corridor 18" },
-  { src: "/client-logos/matan-logo.webp", alt: "Matan" },
-  { src: "/client-logos/popular-stories.png", alt: "Popular Stories" },
-  { src: "/client-logos/soom-soom.png", alt: "Soom Soom" },
-  { src: "/client-logos/Operation_Namaste_DT.jpg", alt: "Operation Namaste" },
-  { src: "/client-logos/Tenzi_Homes_DT.jpg", alt: "Tenzi Homes" },
-  { src: "/client-logos/evan_hsu_DT.jpg", alt: "Evan Hsu" },
-  { src: "/client-logos/shohat_group_DT.jpg", alt: "Shohat Group" },
-  { src: "/client-logos/images.png", alt: "Client" },
+  { src: "/client-logos/abigraphy.jpg", alt: "Abigraphy" },
+  { src: "/client-logos/airborne-studio.jpg", alt: "Airborne Studio" },
+  { src: "/client-logos/dxtr-vision.jpg", alt: "DXTR Vision" },
+  { src: "/client-logos/studio-hsu.jpg", alt: "Studio Hsu" },
+  { src: "/client-logos/ever-after.jpg", alt: "Ever After Photo" },
+  { src: "/client-logos/homelux.jpg", alt: "Homelux Media" },
+  { src: "/client-logos/shohat.jpg", alt: "Shohat Media Group" },
+  { src: "/client-logos/tenzi-homes.jpg", alt: "Tenzi Homes" },
+  { src: "/client-logos/zynk-media.webp", alt: "Zynk Media" },
 ];
 
 const TrustedBySection = () => {
