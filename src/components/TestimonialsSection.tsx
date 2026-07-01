@@ -1,4 +1,4 @@
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Star, Quote } from 'lucide-react';
 
 const TestimonialsSection = () => {
@@ -49,12 +49,15 @@ const TestimonialsSection = () => {
           Hear directly from the videographers and agencies we work with — no scripts, no actors.
         </p>
 
-        {/* Testimonial Pairs */}
-        <div className="max-w-[720px] mx-auto space-y-12">
+        {/* Testimonial Cards — single horizontal row on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="space-y-6">
-              {/* Video Embed */}
-              <div className="relative aspect-video rounded-2xl overflow-hidden bg-primary/90">
+            <Card
+              key={index}
+              className="shadow-brand border-0 overflow-hidden transition-smooth hover:shadow-glow group flex flex-col md:flex-row"
+            >
+              {/* Portrait Video */}
+              <div className="relative w-full md:w-1/2 aspect-[9/16] self-center bg-primary/90">
                 <iframe
                   src={`https://player.vimeo.com/video/${testimonial.videoId}`}
                   title={`${testimonial.name} Testimonial`}
@@ -68,31 +71,29 @@ const TestimonialsSection = () => {
               </div>
 
               {/* Quote Card */}
-              <Card className="shadow-brand border-0 transition-smooth hover:shadow-glow group">
-                <CardContent className="p-8">
-                  <div className="mb-6">
-                    <Quote className="h-8 w-8 text-primary/30 group-hover:text-primary/50 transition-smooth" />
-                  </div>
-                  <div className="flex items-center space-x-1 mb-4">
-                    {renderStars(5)}
-                  </div>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    "{testimonial.quote}"
+              <div className="w-full md:w-1/2 p-5 flex flex-col justify-center">
+                <div className="mb-3">
+                  <Quote className="h-6 w-6 text-primary/30 group-hover:text-primary/50 transition-smooth" />
+                </div>
+                <div className="flex items-center space-x-1 mb-3">
+                  {renderStars(5)}
+                </div>
+                <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
+                  "{testimonial.quote}"
+                </p>
+                <div className="border-t pt-3 mt-auto">
+                  <h4 className="font-semibold text-primary mb-1">
+                    {testimonial.name}
+                  </h4>
+                  <p className="text-sm text-muted-foreground mb-1">
+                    {testimonial.title}
                   </p>
-                  <div className="border-t pt-6">
-                    <h4 className="font-semibold text-primary mb-1">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-sm text-muted-foreground mb-1">
-                      {testimonial.title}
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      {testimonial.location}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                  <p className="text-xs text-muted-foreground">
+                    {testimonial.location}
+                  </p>
+                </div>
+              </div>
+            </Card>
           ))}
         </div>
 
