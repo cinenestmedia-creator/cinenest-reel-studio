@@ -17,6 +17,13 @@ const TestimonialsSection = () => {
 
   const testimonials = [
     {
+      videoId: '1202075560',
+      quote: 'Dhiraj and his team work on 90% of our clients — a huge variety of businesses — and they\'re able to address each brand individually with enough creativity to deliver exactly what we need. Their communication and professionalism is honestly quite amazing. We think he\'s a complete professional and we\'re really happy to have him on our side.',
+      name: 'Tom',
+      title: 'Media Company',
+      location: 'Los Angeles, USA',
+    },
+    {
       videoId: '1202075506',
       quote: 'We needed somebody who could edit our content and work with an international team, and Dhiraj has been a perfect fit — saving us time, saving us money, all while producing top-notch content. I couldn\'t recommend him more highly.',
       name: 'Caleb Speer',
@@ -29,13 +36,6 @@ const TestimonialsSection = () => {
       name: 'Enzo',
       title: 'Videographer',
       location: 'British Columbia, Canada',
-    },
-    {
-      videoId: '1202075560',
-      quote: 'Dhiraj and his team work on 90% of our clients — a huge variety of businesses — and they\'re able to address each brand individually with enough creativity to deliver exactly what we need. Their communication and professionalism is honestly quite amazing. We think he\'s a complete professional and we\'re really happy to have him on our side.',
-      name: 'Tom',
-      title: 'Media Company',
-      location: 'Los Angeles, USA',
     },
   ];
 
