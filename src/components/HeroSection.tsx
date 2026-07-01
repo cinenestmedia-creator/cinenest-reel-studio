@@ -16,7 +16,10 @@ const HeroSection = () => {
       className="hero-section flex items-center justify-center overflow-hidden"
     >
       {/* Background Video */}
-      <div className="hero-video-wrapper z-0 bg-primary">
+      <div 
+        className="hero-video-wrapper z-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      >
         <iframe
           src="https://player.vimeo.com/video/1206184342?background=1&autoplay=1&muted=1&loop=1&playsinline=1&dnt=1"
           title="CineNest Media Background Video"
