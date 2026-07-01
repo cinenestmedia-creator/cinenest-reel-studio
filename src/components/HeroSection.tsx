@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Play } from 'lucide-react';
-import heroBg from '@/assets/hero-bg.png.asset.json';
+import heroPoster from '@/assets/hero-poster.png.asset.json';
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
@@ -18,7 +18,7 @@ const HeroSection = () => {
       {/* Background Video */}
       <div 
         className="hero-video-wrapper z-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroBg})` }}
+        style={{ backgroundImage: `url(${heroPoster.url})` }}
       >
         <iframe
           src="https://player.vimeo.com/video/1206184342?background=1&autoplay=1&muted=1&loop=1&playsinline=1&dnt=1"
