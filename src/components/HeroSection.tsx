@@ -12,12 +12,25 @@ const HeroSection = () => {
   return (
     <section 
       id="hero" 
-      className="hero-section flex items-center justify-center"
-      style={{
-        background: 'linear-gradient(135deg, #0A0A0A 0%, #0D1F14 100%)',
-      }}
+      className="hero-section flex items-center justify-center overflow-hidden"
     >
-      <div className="container mx-auto px-4 text-center text-white">
+      {/* Background Video */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden z-0 bg-primary">
+        <iframe
+          src="https://player.vimeo.com/video/1206184342?background=1&autoplay=1&muted=1&loop=1&playsinline=1&dnt=1"
+          title="CineNest Media Background Video"
+          className="absolute inset-0 w-full h-full object-cover"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/60 z-10" />
+
+      {/* Content */}
+      <div className="container mx-auto px-4 text-center text-white relative z-20">
         <div className="max-w-4xl mx-auto animate-fade-in">
           {/* Company Logo */}
           <div className="mb-8 flex justify-center">

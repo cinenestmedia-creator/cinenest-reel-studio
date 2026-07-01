@@ -127,7 +127,6 @@ All colors MUST be HSL.
   /* Hero section styles */
   .hero-section {
     @apply min-h-screen bg-cover bg-center bg-no-repeat relative;
-    background-image: var(--hero-overlay);
   }
 
   /* Section padding utility */
