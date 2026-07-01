@@ -31,7 +31,7 @@ const HowItWorksSection = () => {
       style={{ backgroundImage: `url(${heroBg.url})` }}
     >
       {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/80" />
+      <div className="absolute inset-0 bg-black/55" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 animate-fade-in">
