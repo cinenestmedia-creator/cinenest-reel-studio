@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Play } from 'lucide-react';
+import heroBg from '@/assets/hero-bg.jpg';
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
