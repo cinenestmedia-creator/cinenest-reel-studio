@@ -103,7 +103,7 @@ const TestimonialsSection = () => {
                   </div>
 
                   {/* Quote Card */}
-                  <div className="w-full md:w-3/5 p-6 md:p-8 flex flex-col justify-center">
+                  <div className="w-full md:flex-1 p-6 md:p-8 flex flex-col justify-center">
                     <div className="mb-3">
                       <Quote className="h-6 w-6 text-primary/30 group-hover:text-primary/50 transition-smooth" />
                     </div>
