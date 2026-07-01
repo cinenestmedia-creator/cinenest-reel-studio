@@ -89,7 +89,7 @@ const TestimonialsSection = () => {
               <CarouselItem key={index}>
               <Card className="shadow-brand border-0 overflow-hidden transition-smooth hover:shadow-glow group flex flex-col md:flex-row max-w-4xl mx-auto">
                   {/* Portrait Video */}
-                  <div className="relative w-full md:w-auto h-[320px] sm:h-[380px] md:h-[420px] aspect-[9/16] self-center bg-primary/90">
+                  <div className="relative w-auto mx-auto h-[320px] sm:h-[380px] md:h-[420px] aspect-[9/16] self-center bg-primary/90">
                     <iframe
                       src={`https://player.vimeo.com/video/${testimonial.videoId}`}
                       title={`${testimonial.name} Testimonial`}
