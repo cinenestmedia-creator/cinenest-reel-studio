@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Home, Film, Lightbulb, ArrowRight, CheckCircle2 } from 'lucide-react';
-import heroBg from '@/assets/hero-bg.png.asset.json';
+import heroBg from '@/assets/hero-poster.png.asset.json';
 
 const ServicesSection = () => {
   const services = [

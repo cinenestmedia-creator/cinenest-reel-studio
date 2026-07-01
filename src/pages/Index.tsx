@@ -12,7 +12,7 @@ import FinalCTASection from '@/components/FinalCTASection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
-import heroBg from '@/assets/hero-bg.png.asset.json';
+import heroBg from '@/assets/hero-poster.png.asset.json';
 
 const Index = () => {
   return (
