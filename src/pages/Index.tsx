@@ -12,13 +12,10 @@ import FinalCTASection from '@/components/FinalCTASection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
-import heroBg from '@/assets/hero-poster.png.asset.json';
-
 const Index = () => {
   return (
-    <div className="min-h-screen bg-cover bg-center bg-fixed relative" 
-         style={{ backgroundImage: `url(${heroBg})` }}>
-      <div className="min-h-screen bg-white/80 backdrop-blur-sm">
+    <div className="min-h-screen relative">
+      <div className="min-h-screen">
         <Navbar />
         <main>
           <HeroSection />
