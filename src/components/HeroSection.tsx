@@ -18,7 +18,7 @@ const HeroSection = () => {
       {/* Background Video */}
       <div 
         className="hero-video-wrapper z-0"
-        style={{ backgroundColor: '#112817' }}
+        style={{ backgroundImage: `url(${heroPoster.url})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
 
         <iframe
