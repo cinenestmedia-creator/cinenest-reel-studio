@@ -27,8 +27,11 @@ const HowItWorksSection = () => {
   return (
     <section 
       id="how-it-works"
-      className="section-padding relative overflow-hidden bg-primary"
+      className="section-padding relative overflow-hidden"
+      style={{ backgroundImage: `url(${heroBg.url})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}
     >
+      <div className="absolute inset-0 bg-black/55 z-0" />
+
 
 
       <div className="container mx-auto px-4 relative z-10">
