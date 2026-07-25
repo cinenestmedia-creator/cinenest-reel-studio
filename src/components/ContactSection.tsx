@@ -7,8 +7,8 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "contact@cinenestmedia.com",
-      href: "mailto:contact@cinenestmedia.com"
+      value: "dhiraj@cinenestmedia.com",
+      href: "mailto:dhiraj@cinenestmedia.com"
     },
     {
       icon: Phone,
