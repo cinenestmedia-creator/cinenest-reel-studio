@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Play } from 'lucide-react';
-import heroPoster from '@/assets/hero-poster.png.asset.json';
+const heroPoster = { url: '/hero-bg.jpg' };
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
