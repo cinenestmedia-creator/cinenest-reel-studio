@@ -127,16 +127,10 @@ const GallerySection = () => {
               <CarouselItem key={item.id} className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
                 <Card className="overflow-hidden shadow-brand border-0 group relative">
                   <div className="overflow-hidden aspect-[9/16] h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px]">
-                    <iframe
-                      src={item.src}
-                      title={item.title}
-                      className="w-full h-full"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
+                    <LazyVideo src={item.src} title={item.title} />
                   </div>
                 </Card>
+
               </CarouselItem>
             ))}
           </CarouselContent>
