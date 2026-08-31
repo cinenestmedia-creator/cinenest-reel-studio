@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Star, Quote } from 'lucide-react';
+import LazyVideo from '@/components/LazyVideo';
+
 import {
   Carousel,
   CarouselContent,
@@ -90,17 +92,13 @@ const TestimonialsSection = () => {
               <Card className="shadow-brand border-0 overflow-hidden transition-smooth hover:shadow-glow group flex flex-col md:flex-row max-w-4xl mx-auto">
                   {/* Portrait Video */}
                   <div className="relative w-auto mx-auto h-[320px] sm:h-[380px] md:h-[420px] aspect-[9/16] self-center bg-primary/90">
-                    <iframe
+                    <LazyVideo
                       src={`https://player.vimeo.com/video/${testimonial.videoId}`}
                       title={`${testimonial.name} Testimonial`}
-                      width="100%"
-                      height="100%"
-                      frameBorder="0"
-                      allow="autoplay; fullscreen; picture-in-picture"
-                      allowFullScreen
-                      className="absolute inset-0 w-full h-full"
+                      className="absolute inset-0"
                     />
                   </div>
+
 
                   {/* Quote Card */}
                   <div className="w-full md:flex-1 p-6 md:p-8 flex flex-col justify-center">
