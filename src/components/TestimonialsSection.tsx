@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Star, Quote } from 'lucide-react';
+import LazyVideo from '@/components/LazyVideo';
+
 import {
   Carousel,
   CarouselContent,
