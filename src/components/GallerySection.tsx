@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import LazyVideo from '@/components/LazyVideo';
+
 import {
   Carousel,
   CarouselContent,
