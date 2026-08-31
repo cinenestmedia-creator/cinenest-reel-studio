@@ -1,6 +1,6 @@
 import { Upload, Sparkles, Rocket } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-const heroBg = { url: '/hero-bg.jpg' };
+import heroBg from '@/assets/hero-poster.png.asset.json';
 
 const HowItWorksSection = () => {
   const steps = [
